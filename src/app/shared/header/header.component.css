@@ -1,0 +1,23 @@
+a{
+    text-decoration: none;
+    color: white;
+    margin-left: 3px;
+}
+a:hover,a:active{
+    color: limegreen;
+}
+.navigation-item{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+mat-toolbar{
+border: 3px;
+}
+@media (max-width: 959px) {
+
+        mat-toolbar{
+            border-radius: 0px;
+        }
+}

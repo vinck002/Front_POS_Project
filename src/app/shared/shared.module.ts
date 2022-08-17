@@ -1,15 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PropertyUnitComponent } from './property-unit/property-unit.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { MaterialModule } from '../material.module';
+import { AppRoutingModule } from '../app-routing.module';
+import { HeaderComponent } from './header/header.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
 @NgModule({
   declarations: [
-    PropertyUnitComponent
+    SidebarComponent,
+    HeaderComponent
   ],
   imports: [
-    CommonModule
+    AppRoutingModule
+    ,MaterialModule,
+    FlexLayoutModule
+  ],exports:
+  [
+    SidebarComponent,
+    HeaderComponent
   ]
 })
 export class SharedModule { }

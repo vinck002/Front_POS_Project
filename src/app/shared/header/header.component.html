@@ -1,0 +1,32 @@
+<mat-toolbar color="primary">
+<div fxHide.gt-xs>
+    <button mat-icon-button (click)="onToggleSidenav()">
+        <mat-icon>menu</mat-icon>
+    </button>
+</div>
+<div>
+    <a routerLink="/home"> Owner-Account</a>
+</div>
+<div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+    <ul fxLayout fxLayoutGap="15px" class="navigation-item">
+        <li>
+            <a routerLink="home" routerLinkActive="router-link-active">Owner Actions</a>
+        </li>
+           <li>
+            <a routerLink="contract" routerLinkActive="router-link-active">Contract</a>
+        </li>
+     
+        <li>    
+            <mat-list-item [matMenuTriggerFor]="menu">
+                <mat-icon>unfold_more</mat-icon>
+                <a matline>Example</a>
+            </mat-list-item>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item  routerLink="home" >Owner Actions</button>
+                <button mat-menu-item routerLink="contract">Contract</button>
+            </mat-menu>
+        </li>
+    </ul>
+</div>
+
+</mat-toolbar>
