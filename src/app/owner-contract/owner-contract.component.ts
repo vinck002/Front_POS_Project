@@ -6,7 +6,7 @@
   styleUrls: ['./owner-contract.component.css']
 })
 export class OwnerContractComponent implements OnInit {
-
+  panelOpenState = false;
   constructor() { }
 
   ngOnInit(): void {

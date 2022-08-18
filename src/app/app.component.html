@@ -1,10 +1,10 @@
 <!-- <app-toolbar></app-toolbar> -->
 
     <mat-sidenav-container>
-        <mat-sidenav #sidenav role="navigation"> 
+        <mat-sidenav #sidenav role="navigation" > 
             <app-sidebar (onsidenavClose)="sidenav.close()" class="mat-sidenav-container"></app-sidebar> <!--myis opciones -->
         </mat-sidenav>
-       
+        
         <mat-sidenav-content>
             <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
             <main>

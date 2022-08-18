@@ -6,18 +6,20 @@ import { PropertiesComponent } from './properties/properties.component';
 import { AddendumComponent } from './addendum/addendum.component';
 import { OwnerContractComponent } from './owner-contract.component';
 import { CommentsComponent } from './comments/comments.component';
+import { PaymentStatusComponent } from './payment-status/payment-status.component';
+import { DocumentsComponent } from './documents/documents.component';
 
 
 const routes:Routes=[
 {
   path:'',component:OwnerContractComponent,
   children:[
-  {path:'',component:OwnerContractComponent},
   {path:"properties",component:PropertiesComponent}
   ,{path:"addendum",component:AddendumComponent}
   ,{path:"comment",component:CommentsComponent}
-  ,{path:"properties",component:PropertiesComponent}
-  ,{path:"documenta",component:PropertiesComponent}
+  ,{path:'',component:ContractmainComponent}
+  ,{path:"documents",component:DocumentsComponent}
+  ,{path:"paymentstatus",component:PaymentStatusComponent}
   ,{path:'**',redirectTo:''}
   ]
 }

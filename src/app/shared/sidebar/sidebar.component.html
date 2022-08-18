@@ -2,15 +2,19 @@
     <a mat-list-item routerLink="home" (click)="onsidenavClose()" >
         <mat-icon>home</mat-icon><span class="nav-caption">Home</span>
     </a>
-    <a mat-list-item routerLink="contract" (click)="onsidenavClose()" >
-        <mat-icon>edit</mat-icon><span class="nav-caption">Contract</span>
+    <mat-divider></mat-divider>
+    <a mat-list-item routerLink="realstate" (click)="onsidenavClose()" [matMenuTriggerFor]="menu" >
+        <mat-icon>unfold_more</mat-icon><span class="nav-caption">Real Estate</span>
     </a>
-    <mat-list-item [matMenuTriggerFor]="menu">
+    <!-- <mat-list-item [matMenuTriggerFor]="menu">
         <mat-icon>unfold_more</mat-icon>
         <a matline>Example</a>
-    </mat-list-item>
-    <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="onsidenavClose()">View profile</button>
-        <button mat-menu-item (click)="onsidenavClose()">View Any</button>
+    </mat-list-item> -->
+
+    <mat-menu  #menu="matMenu">
+        <button mat-menu-item (click)="onsidenavClose()">Create Contract</button>
+        <button mat-menu-item (click)="onsidenavClose()">Payment Status</button>
+        <button mat-menu-item (click)="onsidenavClose()">Addendum</button>
+        <button mat-menu-item (click)="onsidenavClose()">Property</button>
     </mat-menu>
 </mat-nav-list>

@@ -9,7 +9,7 @@ const routes: Routes = [
 {path:'',component:DashboardComponent},
 {path:'home',component:DashboardComponent},
   {
-    path:"contract",
+    path:"realstate",
     loadChildren: () => import('./owner-contract/owner-contract.module').then(x => x.OwnerContractModule)
   },
 {
