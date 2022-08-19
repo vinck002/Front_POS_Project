@@ -8,6 +8,8 @@ import { MaterialModule } from './material.module';
 import { OwnerContractModule } from './owner-contract/owner-contract.module';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { SharedModule } from './shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 
@@ -22,7 +24,9 @@ import { SharedModule } from './shared/shared.module';
     MaterialModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,ReactiveFormsModule
+  ],exports:[
+    ReactiveFormsModule
   ],
   providers: []
   , bootstrap: [AppComponent]

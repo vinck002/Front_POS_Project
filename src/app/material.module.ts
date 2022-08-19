@@ -10,12 +10,20 @@ import{ MatMenuModule}from '@angular/material/menu';
 import {MatCardModule} from '@angular/material/card';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatExpansionModule} from '@angular/material/expansion';
-
-
+import {MatFormFieldModule} from '@angular/material/form-field';
+import{MatInputModule } from '@angular/material/input'
+import {MatSelectModule} from '@angular/material/select';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [],
   imports: [
+    MatTableModule,
+    MatPaginatorModule,
+    MatSelectModule,
+    MatInputModule,
+    MatFormFieldModule,
     MatExpansionModule,
     CommonModule,
     MatButtonModule,
@@ -29,6 +37,11 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatProgressBarModule
     
   ],exports:[
+    MatTableModule,
+    MatPaginatorModule,
+    MatSelectModule,
+    MatInputModule,
+    MatFormFieldModule,
     MatExpansionModule,
     MatProgressBarModule,
     MatCardModule,
