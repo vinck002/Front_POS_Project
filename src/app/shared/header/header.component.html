@@ -11,23 +11,26 @@
 </div>
 <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
     <ul fxLayout fxLayoutGap="15px" class="navigation-item">
-        <li>
-            <a routerLink="home" routerLinkActive="router-link-active">Owner Actions</a>
-        </li>
-           <li>
-            <a routerLink="contract" routerLinkActive="router-link-active">Contract</a>
-        </li>
-     
         <li>    
             <mat-list-item [matMenuTriggerFor]="menu">
-                <mat-icon>unfold_more</mat-icon>
-                <a matline>Example</a>
+                    <mat-icon>expand_more</mat-icon>
+                    <a matline>Admin</a>               
             </mat-list-item>
             <mat-menu #menu="matMenu">
-                <button mat-menu-item  routerLink="home" >Owner Actions</button>
-                <button mat-menu-item routerLink="contract">Contract</button>
+                <button mat-menu-item routerLink="contract">
+                    <mat-icon>vpn_key</mat-icon>
+                    Change Password
+                </button>
             </mat-menu>
         </li>
+         <li>
+             <a routerLink="home" routerLinkActive="router-link-active">Sign in</a>
+             <mat-icon>login</mat-icon>
+        </li> 
+           <!-- <li>
+            <a routerLink="contract" routerLinkActive="router-link-active">Contract</a>
+         </li> -->
+    
     </ul>
 </div>
 

@@ -1,7 +1,7 @@
 <h2>Properties</h2>
 
 <div class="container">
-    <form formGroup="form" (ngSubmit)="onSubmit()">
+    <form [formGroup]="form" (submit)="onSubmit()">
 
         <div class="selectFields">
             <mat-form-field appearance="fill">
@@ -37,61 +37,71 @@
         <div class="Textfield">
             <mat-form-field appearance="outline">
                 <mat-label>Description</mat-label>
-                <input matInput formControlName="description" placeholder="Placeholder">
+                <input  matInput formControlName="description" placeholder="Placeholder">
                 <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Bedrooms</mat-label>
-                <input matInput formControlName="rooms" placeholder="Placeholder">
+                <input type="number" pattern="[0-9]*"
+                 matInput formControlName="rooms" placeholder="Placeholder">
                 <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Bathrooms</mat-label>
-                <input matInput formControlName="bathrooms" placeholder="Placeholder">
+                <input type="number" matInput formControlName="bathrooms" placeholder="Placeholder">
                 <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Const size</mat-label>
-                <input matInput formControlName="buildingSize" placeholder="Placeholder">
+                <input type="number" matInput formControlName="buildingSize" placeholder="Placeholder">
                 <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Batch size / M2</mat-label>
-                <input matInput formControlName="landSize" placeholder="Placeholder">
+                <input type="number" matInput formControlName="landSize" placeholder="Placeholder">
                 <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Batch price</mat-label>
-                <input matInput formControlName="lotePrice" placeholder="Placeholder">
+                <input type="number" matInput formControlName="lotePrice" placeholder="Placeholder">
                 <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Unit Price</mat-label>
-                <input matInput formControlName="unitPrice" placeholder="Placeholder">
+                <input type="number" matInput formControlName="unitPrice" placeholder="Placeholder">
                 <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Min. Price</mat-label>
-                <input matInput formControlName="minPrice" placeholder="Placeholder">
+                <input type="number" matInput formControlName="minPrice" placeholder="Placeholder">
                 <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Max. Price</mat-label>
-                <input matInput formControlName="maxPrice" placeholder="Placeholder">
+                <input type="number" matInput formControlName="maxPrice" placeholder="Placeholder">
                 <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
             </mat-form-field>
-<!-- *********************************************************************************************************************************************************************** -->
-<!-- *********************************************************************************************************************************************************************** -->
-    
-</div>
+          </div>
+
+          <div class="buttonsarea">
+            <button type="button" mat-raised-button (click)="onNewClick()"> New</button>
+            <button  [disabled]="!form.valid" mat-raised-button color="primary"> Save</button>
+          </div>
+
+        </form>
+
+            <!-- *********************************************************************************************************************************************************************** -->
+            <!-- *********************************************************************************************************************************************************************** -->
+            
+
           <div class="listaProp">
 
             <mat-form-field appearance="standard">
@@ -100,64 +110,64 @@
             </mat-form-field>
             
             <div class="mat-elevation-z8">
-              <table mat-table [dataSource]="dataSource" matSort>
+              <table mat-table  [dataSource]="dataSource" matSort>
             
                 <!-- ID Column -->
                 <ng-container matColumnDef="Status">
-                  <th mat-header-cell *matHeaderCellDef > Status </th>
-                  <td mat-cell *matCellDef="let row"> {{row.Status}} </td>
+                  <th mat-header-cell *matHeaderCellDef  mat-sort-header> Status </th>
+                  <td mat-cell *matCellDef="let row"> {{row.status}} </td>
                 </ng-container>
             
                 <!-- Progress Column -->
                 <ng-container matColumnDef="Company">
-                  <th mat-header-cell *matHeaderCellDef> Company </th>
-                  <td mat-cell *matCellDef="let row"> {{row.Company}}</td>
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Company </th>
+                  <td mat-cell *matCellDef="let row"> {{row.company}}</td>
                 </ng-container>
                   <!-- Position Column -->
             
             
                 <!-- Name Column -->
                 <ng-container matColumnDef="ProjectType">
-                  <th mat-header-cell *matHeaderCellDef > ProjectType </th>
-                  <td mat-cell *matCellDef="let row"> {{row.ProjectType}} </td>
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> ProjectType </th>
+                  <td mat-cell *matCellDef="let row"> {{row.projectType}} </td>
                 </ng-container>
             
                 <!-- Fruit Column -->
                 <ng-container matColumnDef="PropertyType">
-                  <th mat-header-cell *matHeaderCellDef > PropertyType </th>
-                  <td mat-cell *matCellDef="let row"> {{row.PropertyType}} </td>
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> PropertyType </th>
+                  <td mat-cell *matCellDef="let row"> {{row.propertyType}} </td>
                 </ng-container>
                 
                 <ng-container matColumnDef="Location">
-                  <th mat-header-cell *matHeaderCellDef > Location </th>
-                  <td mat-cell *matCellDef="let row"> {{row.Location}} </td>
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Location </th>
+                  <td mat-cell *matCellDef="let row"> {{row.location}} </td>
                 </ng-container>
                   <!-- Fruit Column -->
                   <ng-container matColumnDef="Description">
-                    <th mat-header-cell *matHeaderCellDef> Description </th>
-                    <td mat-cell *matCellDef="let row"> {{row.Description}} </td>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+                    <td mat-cell *matCellDef="let row"> {{row.description}} </td>
                   </ng-container>
             
                 <!-- Progress Column -->
                 <ng-container matColumnDef="BedRooms">
-                  <th mat-header-cell *matHeaderCellDef > BedRooms </th>
-                  <td mat-cell *matCellDef="let row"> {{row.BedRooms}} </td>
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> BedRooms </th>
+                  <td mat-cell *matCellDef="let row"> {{row.bedRooms}} </td>
                 </ng-container>
             
                 <!-- Name Column -->
                 <ng-container matColumnDef="BathRooms">
-                  <th mat-header-cell *matHeaderCellDef > BathRooms </th>
-                  <td mat-cell *matCellDef="let row"> {{row.BathRooms}} </td>
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> BathRooms </th>
+                  <td mat-cell *matCellDef="let row"> {{row.bathRooms}} </td>
                 </ng-container>
             
                 <!-- Fruit Column -->
                 <ng-container matColumnDef="BuildingSize">
-                  <th mat-header-cell *matHeaderCellDef > BuildingSize </th>
-                  <td mat-cell *matCellDef="let row"> {{row.BuildingSize}} </td>
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> BuildingSize </th>
+                  <td mat-cell *matCellDef="let row"> {{row.buildingSize}} </td>
                 </ng-container>
                       <!-- Name Column -->
                       <ng-container matColumnDef="Actions">
-                        <th mat-header-cell *matHeaderCellDef> Actions </th>
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
                         <td mat-cell *matCellDef="let row"> 
                           <button mat-button><mat-icon>edit</mat-icon></button>
                           <button mat-button><mat-icon color="warm">delete</mat-icon></button>
@@ -178,5 +188,5 @@
             </div>
           </div>
 
-    </form>
+   
 </div>

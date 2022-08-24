@@ -15,10 +15,12 @@ import{MatInputModule } from '@angular/material/input'
 import {MatSelectModule} from '@angular/material/select';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
 
 @NgModule({
   declarations: [],
   imports: [
+    MatSortModule,
     MatTableModule,
     MatPaginatorModule,
     MatSelectModule,
@@ -37,6 +39,7 @@ import {MatTableModule} from '@angular/material/table';
     MatProgressBarModule
     
   ],exports:[
+    MatSortModule,
     MatTableModule,
     MatPaginatorModule,
     MatSelectModule,

@@ -6,3 +6,7 @@ button{
     width: 90%;
 
 }
+
+mat-expansion-panel{
+background-color: aquamarine;
+}

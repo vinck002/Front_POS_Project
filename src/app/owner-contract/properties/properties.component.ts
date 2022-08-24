@@ -5,20 +5,21 @@ import { REProjectTypeDTO } from 'src/app/core/models/interfaces/reale-state/pro
 import { RealEstateLocationDTO } from 'src/app/core/models/interfaces/reale-state/RELocation';
 import { REPropertyTypeDTO } from 'src/app/core/models/interfaces/reale-state/REpropertyType';
 
-import {MatPaginator, MatPaginatorIntl} from '@angular/material/paginator';
+import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 
 import {MatTableDataSource} from '@angular/material/table';
-import { PropertyMangamentGridDto } from 'src/app/core/models/interfaces/reale-state/REProperty';
+import { PropertyMangamentGridDto, RealEstateProperty } from 'src/app/core/models/interfaces/reale-state/REProperty';
+import { PropertyServiceService } from 'src/app/core/services/property-service.service';
 
 const SampleData: PropertyMangamentGridDto[]= [
-{Company:'Quismar Dominicana',ProjectType:'Royal Lake Village',PropertyType:'Villa',Location:'Cofresi',BathRooms:2.5,BedRooms:2,BuildingSize:250,Active:1,Description:'pv-sample',RealEstatePropertyID:1,Status:'Sold'}
-,{Company:'Hacienda Tropical Club & Resorts, SRL',ProjectType:'The Cliff',PropertyType:'Villa',Location:'Cofresi',BathRooms:1.5,BedRooms:2,BuildingSize:250,Active:1,Description:'pv-sample',RealEstatePropertyID:1,Status:'Available'}
-,{Company:'Quismar Dominicana',ProjectType:'Royal Lake Village',PropertyType:'Villa',Location:'Cofresi',BathRooms:3.5,BedRooms:2,BuildingSize:250,Active:1,Description:'pv-sample',RealEstatePropertyID:1,Status:'Sold'}
-,{Company:'Quismar Dominicana',ProjectType:'Royal Suite',PropertyType:'Villa',Location:'Cofresi',BathRooms:2.5,BedRooms:2,BuildingSize:250,Active:1,Description:'pv-sample',RealEstatePropertyID:1,Status:'Available'}
-,{Company:'Costa Esmeralda',ProjectType:'Royal Lake Village',PropertyType:'Villa',Location:'Cofresi',BathRooms:4.5,BedRooms:2,BuildingSize:250,Active:1,Description:'pv-sample',RealEstatePropertyID:1,Status:'Sold'}
-,{Company:'Quismar Dominicana',ProjectType:'Royal Lake Village',PropertyType:'Villa',Location:'Cofresi',BathRooms:2.5,BedRooms:2,BuildingSize:250,Active:1,Description:'pv-sample',RealEstatePropertyID:1,Status:'Sold'}
-,{Company:'Sunrise Properties',ProjectType:'Sunrise Suite',PropertyType:'Villa',Location:'Cofresi',BathRooms:1.5,BedRooms:2,BuildingSize:250,Active:1,Description:'pv-sample',RealEstatePropertyID:1,Status:'Available'}
+{Company:'Quismar Dominicana',ProjectType:'Royal Lake Village',PropertyType:'Villa',Location:'Cofresi',BathRooms:2.5,BedRooms:2,BuildingSize:250,Description:'pv-sample',RealEstatePropertyID:1,Status:'Sold'}
+,{Company:'Hacienda Tropical Club & Resorts, SRL',ProjectType:'The Cliff',PropertyType:'Villa',Location:'Cofresi',BathRooms:1.5,BedRooms:2,BuildingSize:250,Description:'pv-sample',RealEstatePropertyID:1,Status:'Available'}
+,{Company:'Quismar Dominicana',ProjectType:'Royal Lake Village',PropertyType:'Villa',Location:'Cofresi',BathRooms:3.5,BedRooms:2,BuildingSize:250,Description:'pv-sample',RealEstatePropertyID:1,Status:'Sold'}
+,{Company:'Quismar Dominicana',ProjectType:'Royal Suite',PropertyType:'Villa',Location:'Cofresi',BathRooms:2.5,BedRooms:2,BuildingSize:250,Description:'pv-sample',RealEstatePropertyID:1,Status:'Available'}
+,{Company:'Costa Esmeralda',ProjectType:'Royal Lake Village',PropertyType:'Villa',Location:'Cofresi',BathRooms:4.5,BedRooms:2,BuildingSize:250,Description:'pv-sample',RealEstatePropertyID:1,Status:'Sold'}
+,{Company:'Quismar Dominicana',ProjectType:'Royal Lake Village',PropertyType:'Villa',Location:'Cofresi',BathRooms:2.5,BedRooms:2,BuildingSize:250,Description:'pv-sample',RealEstatePropertyID:1,Status:'Sold'}
+,{Company:'Sunrise Properties',ProjectType:'Sunrise Suite',PropertyType:'Villa',Location:'Cofresi',BathRooms:1.5,BedRooms:2,BuildingSize:250,Description:'pv-sample',RealEstatePropertyID:1,Status:'Available'}
 ];
 
 @Component({
@@ -67,47 +68,83 @@ export class PropertiesComponent implements OnInit {
     {description:'Garden houses',realEstatePropertyTypeID:11}
   ] 
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator ;
-  @ViewChild(MatSort) sort!: MatSort;
-  
   displayedColumns: string[] = ['Status', 'Company', 'ProjectType', 'PropertyType', 'Location', 'Description', 'BedRooms', 'BathRooms', 'BuildingSize','Actions'];
-  dataSource = new MatTableDataSource(SampleData);
-  //  MatTableDataSource<PropertyMangamentGridDto>;
-
+  dataSource =new MatTableDataSource<PropertyMangamentGridDto>;
+  
+  lstPropiedades: PropertyMangamentGridDto[] = [] 
+  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort!: MatSort;
+  
   selectedCompany = this.companies[0].realEstateCompanyID;
 
-  constructor(private formbuilder:FormBuilder) {
-    // const Data:PropertyMangamentGridDto[] = []
-    // this.dataSource =new MatTableDataSource(Data);
-   }
+  constructor(private formbuilder:FormBuilder, private propertyService:PropertyServiceService) { }
 
-  form!:FormGroup ;
+   _property!:RealEstateProperty
+  //  SendClicked = false;
+  form!:FormGroup;
+
   ngOnInit(): void {
+
+    this.initialFormGroup();
+  }
+
+  initialFormGroup(){
     this.form = this.formbuilder.group(
-      {realEstatePropertyID:[0,Validators.required ]
+      {realEstatePropertyID:[0]
       ,description:['',Validators.required ]
       ,active:1
-      ,realEstateLocationID:[1,Validators.required ]
-      ,realEstateProjectTypeID:[1,Validators.required ]
-      ,realEstatePropertyTypeID:[1,Validators.required ]
-      ,rooms:[1,Validators.required]
+      ,realEstateLocationID:[,Validators.required ]
+      ,realEstateProjectTypeID:[,Validators.required ]
+      ,realEstatePropertyTypeID:[,Validators.required ]
+      ,rooms:[,Validators.required]
       ,bathrooms:[1,Validators.required ]
-      ,buildingSize:[0,Validators.required ]
-      ,landSize:[0,Validators.required ]
-      ,lotePrice:[0,Validators.required ]
+      ,buildingSize:[,Validators.required ]
+      ,landSize:[,Validators.required ]
+      ,lotePrice:[,Validators.required ]
       ,unitPrice:[0,Validators.required ]
       ,minPrice:[0,Validators.required ]
       ,maxPrice:[0,Validators.required ]
-  })
+  }); 
+    
+}
+
+
+ngAfterViewInit() {
+
+  this.getPropertiesData();
   }
 
-  ngAfterViewInit() {
-  //    this.dataSource.paginator = this.paginator;
-  //  this.dataSource.sort = this.sort;
-  }
   onSubmit(){
-
+      this.propertyService.SaveProperty(this.form.value).subscribe(
+        (res:any) =>{
+          this._property = res
+          this.editProperty();
+          this.getPropertiesData();
+          // console.log(res)
+        }
+      );
   }
+
+editProperty(){
+  this.form.setValue(this._property)
+}
+ public onNewClick(): void {
+  this._property
+    this.form.reset();
+  }
+
+  
+  getPropertiesData(){
+    this.propertyService.getProperty().subscribe(
+      (x:any) => {
+        this.lstPropiedades = x;
+        this.dataSource = new MatTableDataSource<PropertyMangamentGridDto>(this.lstPropiedades)
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+      }
+    );
+  }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

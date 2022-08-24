@@ -15,9 +15,19 @@ a:hover,a:active{
 mat-toolbar{
 border: 3px;
 }
+
+.unfold{
+    margin-top: 10px;
+}
+
 @media (max-width: 959px) {
 
         mat-toolbar{
             border-radius: 0px;
         }
 }
+mat-list-item{
+    display: flexbox;
+    flex-direction: row;
+}
+

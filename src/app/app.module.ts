@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import{ HttpClientModule}from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,9 +9,8 @@ import { MaterialModule } from './material.module';
 import { OwnerContractModule } from './owner-contract/owner-contract.module';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { SharedModule } from './shared/shared.module';
-import { ReactiveFormsModule } from '@angular/forms';
-
-
+import { ReactiveFormsModule ,FormsModule} from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({
@@ -19,16 +19,20 @@ import { ReactiveFormsModule } from '@angular/forms';
     NotfoundComponent
   ],
   imports: [
+    FormsModule,
+    HttpClientModule,
     SharedModule,
     OwnerContractModule,
     MaterialModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,ReactiveFormsModule
+    BrowserAnimationsModule
+    ,ReactiveFormsModule
   ],exports:[
+    FormsModule,
     ReactiveFormsModule
   ],
-  providers: []
+  providers: [CookieService]
   , bootstrap: [AppComponent]
 })
 export class AppModule { }

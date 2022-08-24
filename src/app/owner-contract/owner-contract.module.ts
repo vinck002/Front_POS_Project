@@ -16,7 +16,7 @@ import { OwnerContractComponent } from './owner-contract.component';
 import { OwnerContratRoutingModule } from './owner-contrat-routing.module';
 import { MaterialModule } from '../material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import { ReactiveFormsModule ,FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,11 +32,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FuturePaymentsComponent,
     OwnerContractComponent
   ],
-  imports: [   
+  imports: [
+     FormsModule,ReactiveFormsModule, 
     OwnerContratRoutingModule,
     CommonModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+
   ]
 })
 export class OwnerContractModule { }

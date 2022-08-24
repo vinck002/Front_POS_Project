@@ -1,4 +1,4 @@
-export interface RealEstatePropertymodel {
+export interface RealEstateProperty {
     realEstatePropertyID: Number;
     description: string;
     active: number;
@@ -14,9 +14,26 @@ export interface RealEstatePropertymodel {
     minPrice: number | null;
     maxPrice: number | null;
 }
+export interface REPropertyCreacionDTO {
+      
+        Description: string;
+        Active: number;
+        RealEstateLocationID: number;
+        RealEstateProjectTypeID: number;
+        RealEstatePropertyTypeID: number;
+        Rooms: number;
+        Bathrooms: number;
+        BuildingSize: number;
+        LandSize: number;
+        LotePrice: number | null;
+        UnitPrice: number | null;
+        MinPrice: number | null;
+        MaxPrice: number | null;
+    }
 
 
 export interface PropertyMangamentGridDto {
+    RealEstatePropertyID: number;
     Status: string;
     Company: string;
     ProjectType: string;
@@ -26,6 +43,4 @@ export interface PropertyMangamentGridDto {
     BedRooms: number;
     BathRooms: number;
     BuildingSize: number;
-    RealEstatePropertyID: number;
-    Active: number;
 }

@@ -1,10 +1,10 @@
-import { RealEstatePropertymodel } from "./REProperty";
+import { RealEstateProperty } from "./REProperty";
 
 export interface RealEstateLocation {
     realEstateLocationID: Number;
     description: String;
     active: Number;
-    realEstateProperty: RealEstatePropertymodel[];
+    realEstateProperty: RealEstateProperty[];
 }
 export interface RealEstateLocationDTO {
     realEstateLocationID: Number;
