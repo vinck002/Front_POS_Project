@@ -1,0 +1,56 @@
+.containerbox{
+    margin-top: 1rem;
+}
+.boxEntidades{
+display: inline-block;
+margin: 0.5rem;
+/* background-color: rgb(23, 162, 218); */
+width: 200px;
+height: 110px;
+}
+
+.number{
+    margin-top: 10px;
+    margin-left: 5px;
+    font-size: 25px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: aliceblue;
+}
+
+.desciption{
+    margin-top: 2px;
+    color: aliceblue;
+}
+.desciption p{
+    margin-top: 5px;
+font-size: 15px;
+margin-left: 5px;
+}
+
+.vermas{
+margin-top: 25px;
+height: 30px;
+background-color: rgba(107, 213, 240, 0.738);
+font-size: 12px;
+color: azure;
+}
+.vermas a{
+
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    color: white;
+}
+.color1{
+    background-color: rgb(124, 23, 218);
+}
+.color2{
+    background-color: rgb(23, 162, 218);
+}
+.color3{
+    background-color: rgb(207, 146, 12);
+}
+.color4{
+    background-color: rgb(218, 23, 39);
+}

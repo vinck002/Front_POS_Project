@@ -105,7 +105,6 @@ export class PropertiesComponent implements OnInit {
       ,minPrice:[0,Validators.required ]
       ,maxPrice:[0,Validators.required ]
   }); 
-    
 }
 
 

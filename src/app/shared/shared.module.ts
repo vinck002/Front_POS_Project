@@ -5,22 +5,32 @@ import { MaterialModule } from '../material.module';
 import { AppRoutingModule } from '../app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import { CoreModule } from '../core/core.module';
+import { LoginComponent } from './login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SpinerComponent } from './spiner/spiner.component';
+import { DialogContentComponent } from './dialog-content/dialog-content.component';
 
 
 @NgModule({
   declarations: [
     SidebarComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoginComponent,
+    SpinerComponent,
+    DialogContentComponent
   ],
   imports: [
+    ReactiveFormsModule,
+    CoreModule,
     AppRoutingModule
     ,MaterialModule,
     FlexLayoutModule
   ],exports:
   [
+    DialogContentComponent,
     SidebarComponent,
-    HeaderComponent
+    HeaderComponent,SpinerComponent
   ]
 })
 export class SharedModule { }

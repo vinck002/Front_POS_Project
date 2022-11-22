@@ -8,6 +8,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class SidebarComponent implements OnInit {
 @Output() sidenavClose = new EventEmitter();
   constructor() { }
+rol:number = 1;
 
   ngOnInit(): void {
   }

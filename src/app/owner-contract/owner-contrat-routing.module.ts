@@ -1,13 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { ContractmainComponent } from './Contractmain/contractmain.component';
 import { PropertiesComponent } from './properties/properties.component';
-import { AddendumComponent } from './addendum/addendum.component';
 import { OwnerContractComponent } from './owner-contract.component';
-import { CommentsComponent } from './comments/comments.component';
-import { PaymentStatusComponent } from './payment-status/payment-status.component';
-import { DocumentsComponent } from './documents/documents.component';
 
 
 const routes:Routes=[
@@ -15,18 +10,15 @@ const routes:Routes=[
   path:'',component:OwnerContractComponent,
   children:[
   {path:"properties",component:PropertiesComponent}
-  ,{path:"addendum",component:AddendumComponent}
-  ,{path:"comment",component:CommentsComponent}
-  ,{path:'',component:ContractmainComponent}
-  ,{path:"documents",component:DocumentsComponent}
-  ,{path:"paymentstatus",component:PaymentStatusComponent}
+  // ,{path:"addendum",component:AddendumComponent}
+  // ,{path:"comment",component:CommentsComponent}
+  // ,{path:'',component:ContractmainComponent}
+  // ,{path:"documents",component:DocumentsComponent}
+  // ,{path:"paymentstatus",component:PaymentStatusComponent}
   ,{path:'**',redirectTo:''}
   ]
 }
 ]
-
-
-
 @NgModule({
   declarations: [],
   imports: [

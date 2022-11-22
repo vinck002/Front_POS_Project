@@ -16,10 +16,13 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatDialogModule} from '@angular/material/dialog';
 @NgModule({
   declarations: [],
   imports: [
+    MatCheckboxModule,
     MatSortModule,
     MatTableModule,
     MatPaginatorModule,
@@ -36,9 +39,12 @@ import {MatSortModule} from '@angular/material/sort';
     MatListModule,
     MatMenuModule,
     MatCardModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatDialogModule
     
   ],exports:[
+    MatCheckboxModule,
     MatSortModule,
     MatTableModule,
     MatPaginatorModule,
@@ -56,7 +62,9 @@ import {MatSortModule} from '@angular/material/sort';
     MatSidenavModule,
     MatDividerModule,
     MatListModule,
-    MatMenuModule
+    MatMenuModule,
+    MatProgressSpinnerModule,
+    MatDialogModule
   ]
 })
 export class MaterialModule { }

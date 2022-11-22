@@ -2,19 +2,68 @@
     <a mat-list-item routerLink="home" (click)="onsidenavClose()" >
         <mat-icon>home</mat-icon><span class="nav-caption">Home</span>
     </a>
-    <mat-divider></mat-divider>
-    <a mat-list-item (click)="onsidenavClose()" [matMenuTriggerFor]="menu" >
-        <mat-icon>store</mat-icon><span class="nav-caption">Real Estate</span>
+
+    <a mat-list-item routerLink="home" (click)="onsidenavClose()" >
+        <mat-icon>shopping_cart</mat-icon><span class="nav-caption"
+        [matMenuTriggerFor]="FacturacionMenu"
+        >Facturacion</span>
     </a>
+    <mat-divider></mat-divider>
+    <app-autorizacion >
+        <ng-container Autorizado>
+          
+            <a mat-list-item (click)="onsidenavClose()" [matMenuTriggerFor]="menu" >
+                <mat-icon>assignment</mat-icon><span class="nav-caption">Contratos</span>
+            </a>
+            <mat-divider></mat-divider>
+            <a mat-list-item (click)="onsidenavClose()" [matMenuTriggerFor]="menuClient" >
+                <mat-icon>assignment_ind</mat-icon><span class="nav-caption">Entidades</span>
+            </a>
+        
+            <mat-divider></mat-divider>
+            <a mat-list-item (click)="onsidenavClose()" [matMenuTriggerFor]="inventario" >
+                <mat-icon>business_center</mat-icon><span class="nav-caption">Inventario</span>
+            </a>
+            <a mat-list-item routerLink="productos" (click)="onsidenavClose()" >
+                <mat-icon>toys</mat-icon><span class="nav-caption">Productos</span>
+            </a>
+            <a mat-list-item routerLink="home" (click)="onsidenavClose()" >
+                <mat-icon>attach_money</mat-icon><span class="nav-caption">Caja</span>
+            </a>
+            <a mat-list-item routerLink="home" (click)="onsidenavClose()" >
+                <mat-icon>receipt</mat-icon><span class="nav-caption">Reportes</span>
+            </a>
+            <a mat-list-item routerLink="home" (click)="onsidenavClose()" >
+                <mat-icon>settings</mat-icon><span class="nav-caption">Configuracion</span>
+            </a>
+     
+        </ng-container>
+    </app-autorizacion>
     <!-- <mat-list-item [matMenuTriggerFor]="menu">
         <mat-icon>unfold_more</mat-icon>
         <a matline>Example</a>
     </mat-list-item> -->
 
+
+    <mat-menu  #FacturacionMenu="matMenu">
+        <button mat-menu-item  routerLink="realstate">Ventas</button>
+        <button mat-menu-item (click)="onsidenavClose()">Orden de Compras</button>
+    </mat-menu>
+
     <mat-menu  #menu="matMenu">
-        <button mat-menu-item  routerLink="realstate">Create Contract</button>
-        <button mat-menu-item (click)="onsidenavClose()">Payment Status</button>
-        <button mat-menu-item (click)="onsidenavClose()">Addendum</button>
+        <button mat-menu-item  routerLink="realstate">Crear Contratos</button>
+        <button mat-menu-item (click)="onsidenavClose()">Estatus de pagos</button>
         <button mat-menu-item (click)="onsidenavClose()">Property</button>
+    </mat-menu>
+
+    <mat-menu  #menuClient="matMenu">
+        <button mat-menu-item  routerLink="entidades/usuario">Listado</button>
+        <button mat-menu-item  routerLink="entidades/clienteproveedor">Cliente / Proveedor</button>
+        <!-- <button mat-menu-item (click)="onsidenavClose()">Proveedor</button> -->
+    </mat-menu>
+
+    <mat-menu  #inventario="matMenu">
+        <button mat-menu-item  routerLink="Inventario">Inventario</button>
+        <button mat-menu-item  routerLink="entrada" (click)="onsidenavClose()">Entrada</button>
     </mat-menu>
 </mat-nav-list>

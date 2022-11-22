@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
-<div 
->
+  
+<div>
 <!-- fxHide.gt-xs -->
     <button mat-icon-button (click)="onToggleSidenav()">
         <mat-icon>menu</mat-icon>
@@ -11,26 +11,36 @@
 </div>
 <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
     <ul fxLayout fxLayoutGap="15px" class="navigation-item">
-        <li>    
-            <mat-list-item [matMenuTriggerFor]="menu">
-                    <mat-icon>expand_more</mat-icon>
-                    <a matline>Admin</a>               
-            </mat-list-item>
-            <mat-menu #menu="matMenu">
-                <button mat-menu-item routerLink="contract">
-                    <mat-icon>vpn_key</mat-icon>
-                    Change Password
-                </button>
-            </mat-menu>
-        </li>
-         <li>
-             <a routerLink="home" routerLinkActive="router-link-active">Sign in</a>
-             <mat-icon>login</mat-icon>
+       
+        <app-autorizacion >
+            <ng-container noAutorizado>
+        <li>
+            <a mat-button routerLink="/login" routerLinkActive="router-link-active">Login <mat-icon>login</mat-icon></a>
         </li> 
-           <!-- <li>
-            <a routerLink="contract" routerLinkActive="router-link-active">Contract</a>
-         </li> -->
-    
+        </ng-container>
+        </app-autorizacion>
+
+        <app-autorizacion >
+            <ng-container Autorizado>
+               <h4> Hola, {{segridadServ.obtenerCampoJWt('Name')}}</h4>  
+                <li>
+                    <a mat-button (click)="salir()" routerLink="home" >Salir <mat-icon>login</mat-icon></a>
+                </li> 
+                <li>    
+                    <mat-list-item [matMenuTriggerFor]="menu">        
+                    <a mat-button matline>Admin <mat-icon>expand_more</mat-icon></a>               
+                    </mat-list-item>
+                    
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item routerLink="contract">
+                            <mat-icon>vpn_key</mat-icon>
+                            Change Password
+                        </button>
+                    </mat-menu>
+                </li>
+        </ng-container>
+        </app-autorizacion>
+
     </ul>
 </div>
 

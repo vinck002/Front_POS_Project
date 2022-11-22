@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import{ HttpClientModule}from '@angular/common/http'
+import{ HttpClientModule, HTTP_INTERCEPTORS}from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,8 +9,8 @@ import { MaterialModule } from './material.module';
 import { OwnerContractModule } from './owner-contract/owner-contract.module';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { SharedModule } from './shared/shared.module';
-import { ReactiveFormsModule ,FormsModule} from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
+import { JwtInterceptorInterceptor } from './core/interceptor/jwt-interceptor.interceptor';
 
 
 @NgModule({
@@ -19,7 +19,7 @@ import { CookieService } from 'ngx-cookie-service';
     NotfoundComponent
   ],
   imports: [
-    FormsModule,
+    
     HttpClientModule,
     SharedModule,
     OwnerContractModule,
@@ -27,12 +27,16 @@ import { CookieService } from 'ngx-cookie-service';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule
-    ,ReactiveFormsModule
   ],exports:[
-    FormsModule,
-    ReactiveFormsModule
+    MaterialModule
   ],
-  providers: [CookieService]
+  providers:
+   [CookieService,{
+    provide:HTTP_INTERCEPTORS,
+    useClass: JwtInterceptorInterceptor,
+    multi:true
+  }]
   , bootstrap: [AppComponent]
+  
 })
 export class AppModule { }

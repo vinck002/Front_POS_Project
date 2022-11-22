@@ -31,3 +31,9 @@ mat-list-item{
     flex-direction: row;
 }
 
+li {
+    display: inline-block;
+}
+
+
+
