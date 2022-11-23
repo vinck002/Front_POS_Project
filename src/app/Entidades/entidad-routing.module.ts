@@ -15,11 +15,6 @@ const routes:Routes=[
     {path:"usuario",component:UsuariosComponent,canActivate:[UserGuardGuard]},
     {path:"cliente",component:EntidadComponent},
     {path:"proveedor",component:ProveedorComponent}
-    // ,{path:"addendum",component:AddendumComponent}
-    // ,{path:"comment",component:CommentsComponent}
-    // ,{path:'',component:ContractmainComponent}
-    // ,{path:"documents",component:DocumentsComponent}
-    // ,{path:"paymentstatus",component:PaymentStatusComponent}
     ,{path:'**',redirectTo:''}
     ]
   }

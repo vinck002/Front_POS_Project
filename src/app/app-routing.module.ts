@@ -8,11 +8,11 @@ import { LoginComponent } from './shared/login/login.component';
 
 
 const routes: Routes = [
-{path:'',component:DashboardComponent},
-{path:'home',component:DashboardComponent},
+{path:'',component:DashboardComponent,canActivate:[UserGuardGuard]},
+{path:'home',redirectTo:''},
   {
     path:"realstate",
-    loadChildren: () => import('./owner-contract/owner-contract.module').then(x => x.OwnerContractModule)
+    loadChildren: () => import('./owner-contract/owner-contract.module').then(x => x.OwnerContractModule),canActivate:[UserGuardGuard]
   },
   {
     path:'entidades',
