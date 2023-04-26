@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   errores: string[]=[];
   ngOnInit(): void 
   {
-    console.log (localStorage.getItem('token'))
+    //console.log (localStorage.getItem('token'))
     this.loadformbuilder();
   }
   loadformbuilder(){

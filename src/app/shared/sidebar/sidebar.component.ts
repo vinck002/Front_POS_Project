@@ -9,7 +9,7 @@ export class SidebarComponent implements OnInit {
 @Output() sidenavClose = new EventEmitter();
   constructor() { }
 rol:number = 1;
-
+role:string = 'admin';
   ngOnInit(): void {
   }
  

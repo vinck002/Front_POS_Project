@@ -11,10 +11,6 @@ const routes: Routes = [
 {path:'',component:DashboardComponent,canActivate:[UserGuardGuard]},
 {path:'home',redirectTo:''},
   {
-    path:"realstate",
-    loadChildren: () => import('./owner-contract/owner-contract.module').then(x => x.OwnerContractModule),canActivate:[UserGuardGuard]
-  },
-  {
     path:'entidades',
     loadChildren: () => import('./Entidades/entidades.module').then(x=> x.EntidadesModule),canActivate:[UserGuardGuard]
   },

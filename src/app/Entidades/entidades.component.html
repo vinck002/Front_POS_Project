@@ -7,7 +7,7 @@
                         <mat-panel-title><mat-icon>store</mat-icon> Entidades
                         </mat-panel-title>
                         <mat-panel-description>
-                           {{panelOpenState ? 'open' : 'closed'}}
+                           {{panelOpenState ? 'Ocultar' : 'Mostrar'}}
                         </mat-panel-description>
                       </mat-expansion-panel-header>
                       <mat-card-actions>
@@ -23,9 +23,9 @@
     <!-- <mat-card-subtitle>Create or update contract</mat-card-subtitle> -->
 
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-    <mat-card-content>
-        <div class="main">
-            <router-outlet class="content"></router-outlet>
+        <mat-card-content>
+        <div class="main mt-3">
+            <router-outlet class="content" ></router-outlet>
 
         </div>
       </mat-card-content>

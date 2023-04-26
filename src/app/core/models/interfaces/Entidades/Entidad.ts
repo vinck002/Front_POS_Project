@@ -42,14 +42,12 @@ export interface Entity{
     }
 
 	export interface user{
-		id:number;
-		name: string;
-		lastname:string;
+
+		username: string;
+		email:string;
 		pass:string;
-		creationDate:Date;
-		status:boolean;
 		role:number;
-		image:string;
+
 	}
 	export interface userGridDto{
 		id:number;

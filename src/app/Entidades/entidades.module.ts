@@ -11,6 +11,7 @@ import{ HttpClientModule}from '@angular/common/http'
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule ,FormsModule} from '@angular/forms';
 import { CoreModule } from '../core/core.module';
+import { EntidadformComponent } from './entidadform/entidadform.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CoreModule } from '../core/core.module';
     EntidadComponent,
     EntidadesComponent,
     ProveedorComponent,
-    ClienteComponent
+    ClienteComponent,
+    EntidadformComponent
   ],
   imports: [
     CoreModule,

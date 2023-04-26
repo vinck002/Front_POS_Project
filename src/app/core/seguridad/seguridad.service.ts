@@ -19,7 +19,7 @@ private readonly Role = 'role';
   
 public logeado():boolean{
     const token = localStorage.getItem(this.token);
-   
+   //console.log(new Date ,this.token);
     if(!token){
     return false;
     }
@@ -36,11 +36,12 @@ public logeado():boolean{
 public logout(){
   localStorage.removeItem(this.token);
   localStorage.removeItem(this.expiracion);
+
 }
   public obtenerRoles():number{
 
     //console.log(this.obtenerCampoJWt(this.Role));
-    if(this.obtenerCampoJWt(this.Role)== 'admin')
+    if(this.obtenerCampoJWt(this.Role) == 'admin')
     {
       return 1;
     }
@@ -55,7 +56,8 @@ public registrar(credenciales:CredUsuario):Observable<respuestaAutenticacion>{
 public login(credenciales:CredUsuario):Observable<respuestaAutenticacion>{
   return this.httpClient.post<respuestaAutenticacion>(this.apiUrl +'/login',credenciales)
 }
-public CrearUsuario(credenciales: CreacionUsuario):Observable<respuestaAutenticacion>{
+public CrearUsuario(credenciales: CreacionUsuario):Observable<respuestaAutenticacion>
+{
 return this.httpClient.post<respuestaAutenticacion>(this.apiUrl +'/crear',credenciales)
 }
 
@@ -70,9 +72,8 @@ obtenerCampoJWt(campo:string):string{
   const helper = new JwtHelperService();
   if(!token){return '';}
   var dataToken = helper.decodeToken(token);
- 
+  //console.log(dataToken);
   return dataToken[campo];
-  //dataToken[campo];
 }
  public ObtenerToke(){
   return localStorage.getItem(this.token)

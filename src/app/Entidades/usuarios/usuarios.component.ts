@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { UsuarioService } from 'src/app/core/Entidades/usuario.service';
+import { UsuarioService } from 'src/app/core/services/Entidades/usuario.service';
 import { role, user } from 'src/app/core/models/interfaces/Entidades/Entidad';
 
 @Component({
@@ -30,8 +30,8 @@ role:role[] = [
 }
 
 loadData(){
-  this.UserServices.getUsuarios().subscribe(
-    (values) =>{
+  this.UserServices.getUsuarios().subscribe({
+    next:(values) =>{
       this.lstUsers = values;
       console.log(this.lstUsers);
       if(this.lstUsers.length > 0){
@@ -40,27 +40,22 @@ loadData(){
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
       }
-    },
-    (err) => console.log(err)
-  )
+    }
+    ,error: (err) => console.log(err)
+})
 }
 
 initialFormGroup(){
   this.form = this.formBuilder.group(
     {
-      id:[0]
-    ,name:['',Validators.required ]
-    ,lastname:['',Validators.required ]
+     userName:['',Validators.required ]
+    ,email:['']
     ,pass:['',Validators.required ]
-    ,creationDate:[new Date,Validators.required ]
-    ,status:false
     ,role:0
-    ,image: ''
-
     }); 
 }
 
-  displayedColumns:string[] = ['name','lastname','status','role','Accion']
+  displayedColumns:string[] = ['userName','email','role','Accion']
   public onNewClick(): void {
     this.initialFormGroup();
       // this.form.reset();
@@ -68,24 +63,23 @@ initialFormGroup(){
 
   onSubmit(){
     this.UserServices.SaveUsuario(this.form.value)
-    .subscribe(()=>
+    .subscribe({next:()=>
     {
       this.loadData();
-    },(error) => console.error(error)
-    );
+    },error:(error) => console.error(error)
+  });
    // console.log(this.form.value)
 
   }
 
-  OnEdit(Id:number):void{
-    const user = this.lstUsers.filter(x => x.id === Id)[0]
+  OnEdit(_username:string):void{
+    const user = this.lstUsers.filter(x => x.username === _username)[0]
     this.form.patchValue(user);
     //console.log()
   }
-  DeleteEntidad(ID:number){
-    this.UserServices.DeactiveUsuario(ID);
+  DeleteEntidad(_username:string){
+    this.UserServices.DeactiveUsuario(_username);
     this.loadData();
-
   }
 
   applyFilter(event: Event) {

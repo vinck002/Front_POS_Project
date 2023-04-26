@@ -3,7 +3,7 @@
         <mat-icon>home</mat-icon><span class="nav-caption">Home</span>
     </a>
 
-    <a mat-list-item routerLink="home" (click)="onsidenavClose()" >
+    <a *appPermitDirective="role" mat-list-item routerLink="home" (click)="onsidenavClose()" >
         <mat-icon>shopping_cart</mat-icon><span class="nav-caption"
         [matMenuTriggerFor]="FacturacionMenu"
         >Facturacion</span>
