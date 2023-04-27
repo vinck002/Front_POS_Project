@@ -38,16 +38,14 @@ public logout(){
   localStorage.removeItem(this.expiracion);
 
 }
-  public obtenerRoles():number{
-
-    //console.log(this.obtenerCampoJWt(this.Role));
-    if(this.obtenerCampoJWt(this.Role) == 'admin')
-    {
-      return 1;
-    }
-    else{
-      return 0;
-    }
+  public obtenerRole():string{  
+    const token = localStorage.getItem(this.token);
+    const helper = new JwtHelperService();
+    if(!token){return '';}
+    const decodedToken = helper.decodeToken(token);
+     
+   const roleclain = decodedToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"]
+    return roleclain? roleclain:null;
    
   }
 public registrar(credenciales:CredUsuario):Observable<respuestaAutenticacion>{
@@ -71,9 +69,9 @@ obtenerCampoJWt(campo:string):string{
   const token = localStorage.getItem(this.token);
   const helper = new JwtHelperService();
   if(!token){return '';}
+  
   var dataToken = helper.decodeToken(token);
-  //console.log(dataToken);
-  return dataToken[campo];
+    return dataToken[campo];
 }
  public ObtenerToke(){
   return localStorage.getItem(this.token)

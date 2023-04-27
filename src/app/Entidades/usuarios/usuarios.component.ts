@@ -13,9 +13,9 @@ import { role, user } from 'src/app/core/models/interfaces/Entidades/Entidad';
 })
 export class UsuariosComponent implements OnInit {
 role:role[] = [
-  {id:1,description:'Admin'}
-  ,{id:2,description:'Supervisor'}
-  ,{id:3,description:'Usuario'}
+  {id:"User",description:'usuario'}
+  ,{id:"Supervisor",description:'Supervisor'}
+  ,{id:"Admin",description:'Usuario'}
 ]
   constructor(private formBuilder:FormBuilder,private UserServices:UsuarioService) { }
   dataSource = new MatTableDataSource<user>;
@@ -51,7 +51,7 @@ initialFormGroup(){
      userName:['',Validators.required ]
     ,email:['']
     ,pass:['',Validators.required ]
-    ,role:0
+    ,role:[Validators.required]
     }); 
 }
 
@@ -62,14 +62,14 @@ initialFormGroup(){
     }
 
   onSubmit(){
+    console.log(this.form.value)
     this.UserServices.SaveUsuario(this.form.value)
     .subscribe({next:()=>
     {
       this.loadData();
     },error:(error) => console.error(error)
   });
-   // console.log(this.form.value)
-
+  
   }
 
   OnEdit(_username:string):void{

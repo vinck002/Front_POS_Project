@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { sidebarOptionDto } from 'src/app/core/Dtos/SidebarOptionsDto';
+import { SeguridadService } from 'src/app/core/seguridad/seguridad.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,10 +9,13 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 @Output() sidenavClose = new EventEmitter();
-  constructor() { }
+  constructor(private SergService:SeguridadService) { }
 rol:number = 1;
-role:string = 'admin';
+role:string = 'Admin';
+
+//sidenavOptions: sidebarOptionDto[]=[]
   ngOnInit(): void {
+    //console.log(this.SergService.obtenerRole());
   }
  
  public onsidenavClose = () =>{

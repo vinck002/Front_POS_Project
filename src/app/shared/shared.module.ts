@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-//import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MaterialModule } from '../material.module';
 import { AppRoutingModule } from '../app-routing.module';
@@ -10,17 +10,18 @@ import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SpinerComponent } from './spiner/spiner.component';
 import { DialogContentComponent } from './dialog-content/dialog-content.component';
-
-
+//import { appPermitDirective } from '../core/Directives/permit-directive.directive';
 @NgModule({
   declarations: [
     SidebarComponent,
     HeaderComponent,
     LoginComponent,
     SpinerComponent,
-    DialogContentComponent
+    DialogContentComponent,
+
   ],
   imports: [
+    CommonModule,
     ReactiveFormsModule,
     CoreModule,
     AppRoutingModule
@@ -30,7 +31,8 @@ import { DialogContentComponent } from './dialog-content/dialog-content.componen
   [
     DialogContentComponent,
     SidebarComponent,
-    HeaderComponent,SpinerComponent
+    HeaderComponent,
+    SpinerComponent
   ]
 })
 export class SharedModule { }

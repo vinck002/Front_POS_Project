@@ -63,7 +63,7 @@ export interface Entity{
 	
 
 	export interface role{
-		id:number;
+		id:string;
 		description:string;
 	}
 

@@ -10,6 +10,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { SharedModule } from './shared/shared.module';
 import { CookieService } from 'ngx-cookie-service';
 import { JwtInterceptorInterceptor } from './core/interceptor/jwt-interceptor.interceptor';
+// import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -18,7 +19,6 @@ import { JwtInterceptorInterceptor } from './core/interceptor/jwt-interceptor.in
     NotfoundComponent
   ],
   imports: [
-    
     HttpClientModule,
     SharedModule,
     MaterialModule,

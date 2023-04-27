@@ -10,7 +10,7 @@ export class AutorizacionComponent implements OnInit {
 
   constructor(private seguridadService:SeguridadService) { }
 
-  @Input()rol!:number;
+  @Input()rol!:string;
 
   ngOnInit(): void {
   

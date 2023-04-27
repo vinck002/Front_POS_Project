@@ -3,21 +3,21 @@ import { CommonModule } from '@angular/common';
 import { CoreComponent } from './core.component';
 import {HttpClientModule} from '@angular/common/http';
 import { AutorizacionComponent } from './seguridad/autorizacion/autorizacion.component';
-import { PermitDirectiveDirective } from './Directives/permit-directive.directive';
+import { appPermitDirective } from './Directives/permit-directive.directive';
 
 
 @NgModule({
   declarations: [
     CoreComponent,
     AutorizacionComponent,
-    PermitDirectiveDirective
+    appPermitDirective
   ],
   imports: [
     HttpClientModule,
     CommonModule
   ],exports:[
     AutorizacionComponent,
-    PermitDirectiveDirective
+    appPermitDirective
   ]
 })
 export class CoreModule { }
