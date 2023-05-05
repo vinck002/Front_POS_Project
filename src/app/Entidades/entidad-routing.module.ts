@@ -7,13 +7,16 @@ import { EntidadesComponent } from './entidades.component';
 import { ProveedorComponent } from './proveedor/proveedor.component';
 import { UserGuardGuard } from '../core/guards/user-guard.guard';
 import { ClienteComponent } from './cliente/cliente.component';
+import { ListaClientesComponent } from './lista-clientes/lista-clientes.component';
 
 const routes:Routes=[
   {
     path:'',component:EntidadesComponent,
     children:[
     {path:"usuario",component:UsuariosComponent,canActivate:[UserGuardGuard]},
-    {path:"cliente",component:ClienteComponent},
+    {path:"cliente",component:ListaClientesComponent},
+    {path:"creacioncliente/:id",component:ClienteComponent},
+    {path:"creacioncliente",component:ClienteComponent},
     {path:"proveedor",component:ProveedorComponent}
     ,{path:'**',redirectTo:''}
     ]

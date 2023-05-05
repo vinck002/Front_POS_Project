@@ -32,16 +32,17 @@ export class LoginComponent implements OnInit {
   Onsubmit():void{
     this.loading = true;
     this.seguridadService.login(this.form.value).subscribe(
-      res =>
+      {next:(res) =>
       {
         this.seguridadService.guardarToken(res)
         this.loading = false;
         this.router.navigate(['/']);
       }
-      ,err => {
+      ,error:(err) => {
         this.errores.push(err);
+        this.loading = false;
         console.error(err.error)}
-    )
+      })
 
   }
   

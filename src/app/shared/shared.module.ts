@@ -10,7 +10,9 @@ import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SpinerComponent } from './spiner/spiner.component';
 import { DialogContentComponent } from './dialog-content/dialog-content.component';
-//import { appPermitDirective } from '../core/Directives/permit-directive.directive';
+import { DashboardComponent } from '../home/dashboard.component';
+
+
 @NgModule({
   declarations: [
     SidebarComponent,
@@ -18,6 +20,7 @@ import { DialogContentComponent } from './dialog-content/dialog-content.componen
     LoginComponent,
     SpinerComponent,
     DialogContentComponent,
+    DashboardComponent
 
   ],
   imports: [

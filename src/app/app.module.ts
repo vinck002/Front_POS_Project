@@ -17,6 +17,7 @@ import { JwtInterceptorInterceptor } from './core/interceptor/jwt-interceptor.in
   declarations: [
     AppComponent,
     NotfoundComponent
+    
   ],
   imports: [
     HttpClientModule,

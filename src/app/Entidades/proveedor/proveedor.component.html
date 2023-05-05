@@ -1,19 +1,19 @@
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-danger">
                         <h2 class="card-title">Proveedor</h2>
                         <p class="card-category">Informacion de Proveedor</p>
                     </div>
                     <div class="card-body">
-                      <app-entidadform></app-entidadform>
+                      <app-entidadform [Kind]="Entidadkind" (submit)="RecivirData($event)"></app-entidadform>
                           <!-- /* aqui el form*/ -->
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class= "mt-2 col-md-2">
                 <div class="card card-profile">
                     <div class="card-avatar">
                         <!-- <a href="javascript:void(0)">
@@ -26,7 +26,7 @@
                         <p class="card-description">
                             Informacion no requerida actualmente
                         </p>
-                        <a href="javascript:void(0)" class="btn btn-danger btn-round">Follow</a>
+                        <a href="javascript:void(0)" class="btn btn-danger btn-round disabled" >Follow</a>
                     </div>
                 </div>
             </div>

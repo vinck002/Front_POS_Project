@@ -11,9 +11,7 @@ export class appPermitDirective implements OnInit {
     ,private viewContainer: ViewContainerRef) { }
     
     private _permisos!: string[]
-// ngOnInit(): void {
-//  this.UpdateView()
-// }
+
 @Input('appPermitDirective')
 set permisos(permit:string[])
 {
@@ -23,15 +21,9 @@ if(this.tienePermisos())
   else{this.viewContainer.clear();}
 } ;
 
-// @Input() //permisosUsuario!: string[] ;
-// set permisosUsuario(val:string[]){this._permisosUser = val} ;
 
 ngOnInit() {
-  // if (this.tienePermisos()) {
-  //   this.viewContainer.createEmbeddedView(this.Element);
-  // } else {
-  //   this.viewContainer.clear();
-  // }
+
 }
 private tienePermisos(): boolean {
   var result = false;

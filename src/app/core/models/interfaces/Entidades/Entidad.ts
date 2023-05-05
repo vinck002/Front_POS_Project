@@ -2,7 +2,6 @@
 export interface Entity{
     id :number;
 	identification: string;
-	Rnc:string;
 	image:string | undefined;
 	name:string  ;
 	lastname:string;
@@ -14,25 +13,26 @@ export interface Entity{
 	email1:string | undefined;
 	email2:string | undefined;
 	kind:number; // proveedor o cliente
+	notes:String
 	created_at:Date;
 	status:boolean;
     }
 
 	export interface EntityCreationDto{
-		identification: string;
-		Rnc:string;
-		name:string  ;
-		lastname:string;
-		company:string;
-		address1:string;
-		address2:string | undefined;
-		phone1:string | undefined;
-		phone2:string | undefined;
-		email1:string | undefined;
-		email2:string | undefined;
-		kind:number; // proveedor o cliente
-		created_at:Date;
-		status:boolean;
+	identification: String;
+	image:string | undefined;
+	name:string  ;
+	lastname:string;
+	company:string;
+	address1:string;
+	address2:string | undefined;
+	phone1:string | undefined;
+	phone2:string | undefined;
+	email:string | undefined;
+	kind:number; // proveedor o cliente
+	notes:String
+	created_at:Date;
+	status:boolean;
 		}
 
     export interface TipoEntidad{
@@ -43,23 +43,13 @@ export interface Entity{
 
 	export interface user{
 
-		username: string;
-		email:string;
-		pass:string;
-		role:number;
-
-	}
-	export interface userGridDto{
-		id:number;
-		name: string;
-		lastname:string;
-		pass:string;
-		creationDate:Date;
-		status:boolean;
+		userName: string;
+		email:string| undefined;
+		password:string;
 		role:string;
-		image:string;
-	}
 
+	}
+	
 	
 
 	export interface role{

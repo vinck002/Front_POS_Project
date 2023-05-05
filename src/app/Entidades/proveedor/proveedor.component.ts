@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EntityCreationDto } from 'src/app/core/models/interfaces/Entidades/Entidad';
 
 @Component({
   selector: 'app-proveedor',
@@ -8,8 +9,12 @@ import { Component, OnInit } from '@angular/core';
 export class ProveedorComponent implements OnInit {
 
   constructor() { }
-
+Entidadkind:Number = 2;
   ngOnInit(): void {
   }
-
+  btnDisabled: boolean = true;
+  
+  RecivirData(Datos: EntityCreationDto){
+    console.log(Datos);
+  }
 }

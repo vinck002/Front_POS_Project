@@ -15,7 +15,7 @@ export class UsuariosComponent implements OnInit {
 role:role[] = [
   {id:"User",description:'usuario'}
   ,{id:"Supervisor",description:'Supervisor'}
-  ,{id:"Admin",description:'Usuario'}
+  ,{id:"Admin",description:'Administrador'}
 ]
   constructor(private formBuilder:FormBuilder,private UserServices:UsuarioService) { }
   dataSource = new MatTableDataSource<user>;
@@ -33,7 +33,7 @@ loadData(){
   this.UserServices.getUsuarios().subscribe({
     next:(values) =>{
       this.lstUsers = values;
-      console.log(this.lstUsers);
+      //console.log(this.lstUsers);
       if(this.lstUsers.length > 0){
         //this.form.patchValue(this.lstUsers);
         this.dataSource = new MatTableDataSource<user>(this.lstUsers)
@@ -50,7 +50,7 @@ initialFormGroup(){
     {
      userName:['',Validators.required ]
     ,email:['']
-    ,pass:['',Validators.required ]
+    ,password:['',Validators.required ]
     ,role:[Validators.required]
     }); 
 }
@@ -62,7 +62,7 @@ initialFormGroup(){
     }
 
   onSubmit(){
-    console.log(this.form.value)
+   // console.log(this.form.value)
     this.UserServices.SaveUsuario(this.form.value)
     .subscribe({next:()=>
     {
@@ -73,7 +73,7 @@ initialFormGroup(){
   }
 
   OnEdit(_username:string):void{
-    const user = this.lstUsers.filter(x => x.username === _username)[0]
+    const user = this.lstUsers.filter(x => x.userName === _username)[0]
     this.form.patchValue(user);
     //console.log()
   }

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UsuariosComponent } from './usuarios/usuarios.component';
-import { EntidadComponent } from './entidad/entidad.component';
 import { EntidadRoutingModule } from './entidad-routing.module';
 import { EntidadesComponent } from './entidades.component';
 import { ProveedorComponent } from './proveedor/proveedor.component';
@@ -12,16 +11,19 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule ,FormsModule} from '@angular/forms';
 import { CoreModule } from '../core/core.module';
 import { EntidadformComponent } from './entidadform/entidadform.component';
+import { ListaClientesComponent } from './lista-clientes/lista-clientes.component';
+import { ListaProveedoresComponent } from './lista-proveedores/lista-proveedores.component';
+
 
 @NgModule({
   declarations: [
-   
     UsuariosComponent,
-    EntidadComponent,
     EntidadesComponent,
     ProveedorComponent,
     ClienteComponent,
-    EntidadformComponent
+    EntidadformComponent,
+    ListaClientesComponent,
+    ListaProveedoresComponent
   ],
   imports: [
     CoreModule,

@@ -54,3 +54,6 @@ color: azure;
 .color4{
     background-color: rgb(218, 23, 39);
 }
+.boxEntidades{
+    cursor: pointer;
+}

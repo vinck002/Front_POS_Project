@@ -1,24 +1,24 @@
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-danger">
                         <h2 class="card-title">Cliente</h2>
                         <p class="card-category">Informacion de cliente</p>
                     </div>
-                    <div class="card-body">
-                      <app-entidadform></app-entidadform>
+                    <div *ngIf="entidad !== undefined || !ID " class="card-body">
+                      <app-entidadform [modelo]="entidad" [listadoErrores]="errores" [Kind]="Entidadkind" (submit)="guardarCambios($event)"></app-entidadform>
                           <!-- /* aqui el form*/ -->
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <!-- <div class="col-md-4">
                 <div class="card card-profile">
                     <div class="card-avatar">
-                        <!-- <a href="javascript:void(0)">
+                         <a href="javascript:void(0)">
                             <img class="img" src="./assets/img/faces/marc.jpg" />
-                        </a> -->
+                        </a> 
                     </div>
                     <div class="card-body">
                         <h6 class="card-category text-gray">CEO / Co-Founder</h6>
@@ -29,7 +29,7 @@
                         <a href="javascript:void(0)" class="btn btn-danger btn-round">Follow</a>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
   </div>

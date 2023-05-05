@@ -1,73 +1,79 @@
-<form >
+<app-motrar-errores [errores]="listadoErrores"></app-motrar-errores>
+<form [formGroup]="form" (submit)="onSubmit()">
     <div class="row">
-        <div class="col-md-5">
-          <mat-form-field class="example-full-width">
-              <input matInput placeholder="Company" >
+        <div class="col-md-4 ml-2">
+          <mat-form-field  appearance="outline">
+            <mat-label>Compañia </mat-label>
+              <input matInput placeholder="Compañia" formControlName="company">
             </mat-form-field>
+        </div>
+        <div class="col-md-4">
+            <mat-form-field appearance="outline">
+              <input matInput placeholder="Cedula o Rnc" formControlName="identification">
+            </mat-form-field>
+        </div>
+        <div class="col-md-4">
+            <mat-form-field  appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="Email" type="Email" formControlName="email">
+            </mat-form-field>
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="Nombres" type="text" formControlName="name">
+          </mat-form-field>
         </div>
         <div class="col-md-3">
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Username">
-            </mat-form-field>
-        </div>
-        <div class="col-md-4">
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Email address" type="email">
-            </mat-form-field>
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="Apellidos" type="text" formControlName="lastname">
+          </mat-form-field>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Fist Name" type="text">
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="Direccion " type="text" formControlName="address1">
           </mat-form-field>
         </div>
         <div class="col-md-6">
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Last Name" type="text">
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="Direccion 2" type="text" formControlName="address2">
           </mat-form-field>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Adress" type="text">
-          </mat-form-field>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="City" type="text">
-          </mat-form-field>
-        </div>
-        <div class="col-md-4">
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Country" type="text">
-          </mat-form-field>
-        </div>
-        <div class="col-md-4">
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Postal Code" type="text">
-          </mat-form-field>
-        </div>
-    </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Telefono 1" type="text" formControlName="phone1">
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Telefono 2" type="text" formControlName="phone2">
+        </mat-form-field>
+      </div>
+  </div>
+
+
     <div class="row">
         <div class="col-md-12">
           <!-- <label>About Me</label>
-          <mat-form-field class="example-full-width">
+          <mat-form-field appearance="outline">
              <textarea matInput placeholder="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."></textarea>
            </mat-form-field> -->
             <div class="form-group">
 
                 <div class="form-group">
                     <label class="bmd-label-floating"> Notas.</label>
-                    <textarea class="form-control" rows="5"></textarea>
+                    <textarea class="form-control" rows="5" formControlName="notes"></textarea>
                 </div>
             </div>
         </div>
     </div>
-    <button mat-raised-button type="submit" class="btn btn-danger pull-right">Guardar</button>
-    <button mat-raised-button  class="btn btn- danger  m-2">Cancelar</button>
+    <button type="submit" [disabled]="!form.valid" mat-raised-button   color="primary">Guardar</button>
+    <button mat-flat-button  class="btn btn- danger  ml-2">Cancelar</button>
     <div class="clearfix"></div>
 </form>

@@ -11,7 +11,7 @@ export class UsuarioService {
 
 constructor(private http:HttpClient) { }
 Uri = environment.apiURL + 'usuario'
-UriCreacion = environment.apiURL + 'cuenta'
+UriCreacion = this.Uri + '/crear'
 
 
 public getUsuarios():Observable<user[]>{
@@ -20,12 +20,11 @@ public getUsuarios():Observable<user[]>{
 }
 
 public SaveUsuario(usuario:user){
-
-return this.http.post(this.Uri,usuario);
+return this.http.post(this.UriCreacion,usuario);
 }
 
 public DeactiveUsuario(_username:string){
-  return this.http.post(this.Uri,_username);
+  return this.http.post(this.UriCreacion,_username);
   }
 
 }
