@@ -1,0 +1,10 @@
+td button{
+margin-left: 1rem;
+}
+/*
+table{
+    background-color: aquamarine;
+} */
+mat-paginator{
+    background-color: aquamarine;
+}

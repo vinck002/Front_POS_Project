@@ -5,6 +5,10 @@ import {HttpClientModule} from '@angular/common/http';
 import { AutorizacionComponent } from './seguridad/autorizacion/autorizacion.component';
 import { appPermitDirective } from './Directives/permit-directive.directive';
 import { MotrarErroresComponent } from './tools/motrar-errores/motrar-errores.component';
+import { InputNumberOnlyDirective } from './Directives/input-number-only.directive';
+import { InputImgComponent } from './tools/input-img/input-img.component';
+import { MaterialModule } from '../material.module';
+
 
 
 @NgModule({
@@ -12,15 +16,20 @@ import { MotrarErroresComponent } from './tools/motrar-errores/motrar-errores.co
     CoreComponent,
     AutorizacionComponent,
     appPermitDirective,
-    MotrarErroresComponent
+    MotrarErroresComponent,
+    InputNumberOnlyDirective,
+    InputImgComponent
   ],
   imports: [
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    MaterialModule
   ],exports:[
     AutorizacionComponent,
     appPermitDirective,
-    MotrarErroresComponent
+    InputNumberOnlyDirective,
+    MotrarErroresComponent,
+    InputImgComponent
   ]
 })
 export class CoreModule { }

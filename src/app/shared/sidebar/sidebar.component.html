@@ -4,7 +4,7 @@
     </a>
 
     <a  *appPermitDirective="['admin']" mat-list-item routerLink="home" (click)="onsidenavClose()" >
-        <mat-icon>shopping_cart</mat-icon><span class="nav-caption"   
+        <mat-icon>point_of_sale</mat-icon><span class="nav-caption"   
         [matMenuTriggerFor]="FacturacionMenu"
         >Facturacion</span>
     </a>
@@ -20,12 +20,9 @@
         
             <mat-divider></mat-divider>
    
-                <a *ngFor="let item of ['tada','eee','dec']"  mat-list-item (click)="onsidenavClose()" [matMenuTriggerFor]="inventario" >
+                <!-- <a *ngFor="let item of ['tada','eee','dec']"  mat-list-item (click)="onsidenavClose()" [matMenuTriggerFor]="inventario" >
                     <mat-icon>business_center</mat-icon><span class="nav-caption">Inventario</span>
-                </a>
-     
-
-
+                </a> -->
             <a mat-list-item (click)="onsidenavClose()" [matMenuTriggerFor]="inventario" >
                 <mat-icon>business_center</mat-icon><span class="nav-caption">Inventario</span>
             </a>
@@ -64,7 +61,11 @@
     </mat-menu>
 
     <mat-menu  #inventario="matMenu">
-        <button mat-menu-item  routerLink="Inventario">Inventario</button>
-        <button mat-menu-item  routerLink="entrada" (click)="onsidenavClose()">Entrada</button>
+        <button mat-menu-item  routerLink="/inventario/categorias"> <mat-icon>group_work</mat-icon> Categorias</button>
+        <button mat-menu-item  routerLink="/inventario/productos"><mat-icon>library_add</mat-icon> Productos</button>
+        <button mat-menu-item  routerLink="/inventario/stock"><mat-icon>warehouse</mat-icon> Stock</button>
+        <button mat-menu-item  routerLink="/inventario/ordenes-entrada" (click)="onsidenavClose()"> <mat-icon>receipt</mat-icon> Entrada Mercancía</button>
     </mat-menu>
+
+
 </mat-nav-list>

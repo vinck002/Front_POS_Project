@@ -7,8 +7,11 @@
                         <h2 class="card-title">Proveedor</h2>
                         <p class="card-category">Informacion de Proveedor</p>
                     </div>
-                    <div class="card-body">
-                      <app-entidadform [Kind]="Entidadkind" (submit)="RecivirData($event)"></app-entidadform>
+
+                    
+                    <div *ngIf="entidad !== undefined || !ID " class="card-body">
+                    <app-entidadform [modelo]="entidad" [listadoErrores]= "errores" [Kind]="Entidadkind" (submit)="guardarCambios($event)"></app-entidadform>
+              
                           <!-- /* aqui el form*/ -->
                     </div>
                 </div>
@@ -20,14 +23,14 @@
                             <img class="img" src="./assets/img/faces/marc.jpg" />
                         </a> -->
                     </div>
-                    <div class="card-body">
+                    <!-- <div class="card-body">
                         <h6 class="card-category text-gray">CEO </h6>
                         <h4 class="card-title">Melvin Parra</h4>
                         <p class="card-description">
                             Informacion no requerida actualmente
                         </p>
                         <a href="javascript:void(0)" class="btn btn-danger btn-round disabled" >Follow</a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-<app-motrar-errores [errores]="listadoErrores"></app-motrar-errores>
+<app-motrar-errores *ngIf="listadoErrores.length > 0" [errores]="listadoErrores"></app-motrar-errores>
 <form [formGroup]="form" (submit)="onSubmit()">
     <div class="row">
         <div class="col-md-4 ml-2">
@@ -9,7 +9,8 @@
         </div>
         <div class="col-md-4">
             <mat-form-field appearance="outline">
-              <input matInput placeholder="Cedula o Rnc" formControlName="identification">
+              <mat-label>Cedula o Rnc </mat-label>
+              <input matInput placeholder="Cedula o Rnc" NumberOnly formControlName="identification">
             </mat-form-field>
         </div>
         <div class="col-md-4">
@@ -23,11 +24,13 @@
     <div class="row">
         <div class="col-md-3">
           <mat-form-field appearance="outline">
-            <input matInput placeholder="Nombres" type="text" formControlName="name">
+            <mat-label>Nombres</mat-label>
+            <input matInput placeholder="Nombres" type="text" formControlName="names">
           </mat-form-field>
         </div>
         <div class="col-md-3">
           <mat-form-field appearance="outline">
+            <mat-label>Apellidos</mat-label>
             <input matInput placeholder="Apellidos" type="text" formControlName="lastname">
           </mat-form-field>
         </div>
@@ -35,11 +38,14 @@
     <div class="row">
         <div class="col-md-6">
           <mat-form-field appearance="outline">
+
+            <mat-label>Direccion 1</mat-label>
             <input matInput placeholder="Direccion " type="text" formControlName="address1">
           </mat-form-field>
         </div>
         <div class="col-md-6">
           <mat-form-field appearance="outline">
+            <mat-label>Direcion (Opcional)</mat-label>
             <input matInput placeholder="Direccion 2" type="text" formControlName="address2">
           </mat-form-field>
         </div>
@@ -47,12 +53,14 @@
     <div class="row">
       <div class="col-md-6">
         <mat-form-field appearance="outline">
-          <input matInput placeholder="Telefono 1" type="text" formControlName="phone1">
+          <mat-label>Celular</mat-label>
+          <input matInput placeholder="Telefono 1" type="text" NumberOnly formControlName="phone1">
         </mat-form-field>
       </div>
       <div class="col-md-6">
         <mat-form-field appearance="outline">
-          <input matInput placeholder="Telefono 2" type="text" formControlName="phone2">
+          <mat-label>Telefono</mat-label>
+          <input matInput placeholder="Telefono 2" type="text" NumberOnly formControlName="phone2">
         </mat-form-field>
       </div>
   </div>
@@ -64,13 +72,17 @@
           <mat-form-field appearance="outline">
              <textarea matInput placeholder="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."></textarea>
            </mat-form-field> -->
-            <div class="form-group">
-
+           <mat-form-field appearance="outline">
+            <!-- <label> Notas.</label> -->
+            <textarea matInput placeholder="Notas" class="form-control" rows="5" formControlName="notes"></textarea>
+           </mat-form-field> 
+           <!-- <div class="form-group">
+              
                 <div class="form-group">
                     <label class="bmd-label-floating"> Notas.</label>
                     <textarea class="form-control" rows="5" formControlName="notes"></textarea>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
     <button type="submit" [disabled]="!form.valid" mat-raised-button   color="primary">Guardar</button>

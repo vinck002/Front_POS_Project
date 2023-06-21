@@ -1,0 +1,31 @@
+<h2>Categoria</h2>
+<mat-progress-spinner *ngIf="!renderizar" [mode]="'indeterminate'"></mat-progress-spinner>
+<div >
+    <!-- <app-categoria-form  [category]="category" (submit)="onSubmit($event)"></app-categoria-form> -->
+
+    <app-motrar-errores *ngIf="listadoErrores.length > 0" [errores]="listadoErrores"></app-motrar-errores>
+    <form [formGroup]="form" (submit)="onSubmit()">
+        <div>
+            <mat-form-field appearance="outline">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput placeholder="Nombre" formControlName="name">
+                    <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                    <!-- <mat-hint>Hint</mat-hint> -->
+                </mat-form-field>   
+        </div>        
+            <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Descripcion</mat-label>
+                <input matInput placeholder="Descripcion" formControlName = "description">
+            </mat-form-field>
+            </div>
+             <app-input-img  [urlImgActual]="category === undefined? urlDefaultImg : category.image"  (selectedFile)="SelectedFile($event)"> </app-input-img> 
+    
+        <div>
+            <button type="submit" [disabled]="!form.valid" mat-raised-button   color="primary">Guardar</button>
+            <button mat-stroked-button routerLink="/inventario/categorias"  class="btn btn- danger  ml-2">Cancelar</button>
+        <div class="clearfix"></div>
+        </div>
+    </form>
+
+</div>

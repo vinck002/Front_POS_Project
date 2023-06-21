@@ -1,0 +1,72 @@
+<h2>Productos</h2>
+<mat-progress-spinner *ngIf="!renderizar" [mode]="'indeterminate'"></mat-progress-spinner>
+<div >
+    <!-- <app-categoria-form  [category]="category" (submit)="onSubmit($event)"></app-categoria-form> -->
+
+    <app-motrar-errores *ngIf="listadoErrores.length > 0" [errores]="listadoErrores"></app-motrar-errores>
+    <div *ngIf="renderizar">   
+
+            <form  [formGroup]="form" (submit)="onSubmit()">
+                
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput placeholder="Nombre" formControlName="name">
+                </mat-form-field>   
+                
+                <mat-form-field appearance="outline"> 
+                    <mat-label>Codigo</mat-label>
+                    <input matInput placeholder="Codigo" formControlName="barcode" >
+                </mat-form-field>
+                
+                    <mat-form-field appearance="outline">
+                        <mat-label>Descripcion</mat-label>
+                        <input matInput placeholder="Descripcion" formControlName = "description">
+                    </mat-form-field>
+                
+                    <mat-form-field appearance="outline">
+                        <mat-label>Stock minimo</mat-label>
+                        <input matInput placeholder="Stock minimo" formControlName = "inventary_min">
+                    </mat-form-field>
+        
+                    <mat-form-field appearance="outline">
+                        <mat-label> Precio 1</mat-label>
+                        <input matInput 
+                        currencyMask 
+                        [options]="{ prefix: 'DOP$ ', thousands: '.', decimal: ',' }"
+                        placeholder="Precio 1" formControlName = "price_in">
+        
+                    </mat-form-field> 
+                
+                    <mat-form-field appearance="outline">
+                        <mat-label>Precio 2</mat-label>
+                        <input matInput 
+                        currencyMask
+                        [options]="{ prefix: 'DOP$ ', thousands: ',', decimal: '.' }"
+                        placeholder="Precio 2" formControlName = "price_out">
+                    </mat-form-field>
+        
+                    <mat-form-field  appearance="outline">
+                        <mat-label>Selecciona la Unidad</mat-label>
+                        <mat-select  formControlName="unitID">
+                        <mat-option *ngFor="let unid of unitType" [value]="unid.id" >{{unid.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+        
+                    <mat-form-field *ngIf="lstCategories"  appearance="outline">
+                        <mat-label>Categorias</mat-label>
+                        <mat-select formControlName="categoryId">
+                        <mat-option  *ngFor="let cat of lstCategories" [value]="cat.id" >{{cat.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+        
+                    <app-input-img  [urlImgActual]="product=== undefined? urlDefaultImg : product.image"  (selectedFile)="SelectedFile($event)"> </app-input-img> 
+            
+                <div>
+                    <button type="submit" [disabled]="!form.valid" mat-raised-button   color="primary">Guardar</button>
+                    <button mat-stroked-button routerLink="/inventario/categorias"  class="btn btn- danger  ml-2">Cancelar</button>
+                <div class="clearfix"></div>
+                </div>
+            </form>
+    </div>
+
+</div>

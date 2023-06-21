@@ -10,14 +10,24 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { SharedModule } from './shared/shared.module';
 import { CookieService } from 'ngx-cookie-service';
 import { JwtInterceptorInterceptor } from './core/interceptor/jwt-interceptor.interceptor';
-// import { CommonModule } from '@angular/common';
+
+import { ListaCategoriaComponent } from './Inventario/categoria/lista-categoria/lista-categoria.component';
+import { FormsModule } from '@angular/forms';
+import { CurrencyPipe } from '@angular/common';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotfoundComponent
-    
+    NotfoundComponent,
+    ListaCategoriaComponent,
+    // ListaProductosComponent,
+    // ProductosCreacionComponent,
+    // ListaInventarioComponent,
+    // CreacionInventarioComponent,
+    // EntradasComponent,
+    // OrdenesEntradasComponent    
   ],
   imports: [
     HttpClientModule,
@@ -25,18 +35,22 @@ import { JwtInterceptorInterceptor } from './core/interceptor/jwt-interceptor.in
     MaterialModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
   ],exports:[
     MaterialModule
   ],
   providers:
-   [CookieService,
+   [CurrencyPipe,
+    //CookieService,
     {
     provide:HTTP_INTERCEPTORS
     ,useClass: JwtInterceptorInterceptor
     ,multi:true
-  }]
-  , bootstrap: [AppComponent]
+  }/*,{ provide: MY_TOKEN, useClass: String }*/
+
+]
+  ,bootstrap: [AppComponent]
   
 })
 export class AppModule { }

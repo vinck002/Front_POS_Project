@@ -1,24 +1,55 @@
-export interface product{
-    id:number;
-    image:string;
-    barcode:string;
-    name:string;
-    description:string;
-    inventaryMIn:number;
+import { categoryDTO } from "./category";
+//'Name','Image','Descripcion','Min Stock','Precio/Mayor','Precio/Detalle','Und','Categoria','Estado'
+export interface Product {
+    id: number;
+    image: string;
+    barcode: string;
+    name: string;
+    description: string;
+    inventary_min: number;
     price_in: number;
-    price_out:number;
-    unit: string;
-    presentatiom:string;
-    userD:number;
-    categoryID:number;
-    created_at:Date;
-    is_active:number
+    price_out: number;
+    UnitID: number;
+    user_id: string;
+    categoryId: number;
+    category: categoryDTO;
+    created_at: string;
+    is_active: boolean;
+    updated_at: string | null;
 }
 
-export interface category{
-    id:number;
-    image:string;
-    name:string;
-    description:string;
-    created_at:Date;
+export interface productDTO{
+    id: number;
+    image: string;
+    barcode: string;
+    name: string;
+    description: string;
+    inventary_min: number ;
+    price_in: number;
+    price_out: number;
+    UnitID: number|1;
+    categoryId :number;
+    categoryName: string;
+    is_active: boolean; 
+    updated_at: string | null;
+}
+
+export interface ProductoCreacionDTO {
+    image: File|null;
+    barcode: string | null;
+    name: string|'';
+    description: string|'';
+    inventary_min: number| 1;
+    price_in: number | 0;
+    price_out: number|0;
+    unitID: number|1;
+    categoryId: number | 1;
+    is_active: boolean|true|false;
+    updated_at: string | null;
+}
+
+
+export interface UnitType{
+    id: number;
+    name: string;
 }

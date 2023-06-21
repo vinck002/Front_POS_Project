@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { catchError } from 'rxjs/internal/operators/catchError';
 import { EntityCreationDto } from 'src/app/core/models/interfaces/Entidades/Entidad';
-import { ClienteServiceService } from 'src/app/core/services/cliente-service.service';
-import { parsearerrorAPI } from 'src/app/core/tools/utilidades';
+//import { ClienteServiceService } from 'src/app/core/services/cliente-service.service';
+import { EntidadService } from 'src/app/core/services/entidad-service';
+//import { parsearerrorAPI } from 'src/app/core/tools/utilidades';
 
 @Component({
   selector: 'app-cliente',
@@ -11,26 +13,25 @@ import { parsearerrorAPI } from 'src/app/core/tools/utilidades';
 })
 export class ClienteComponent implements OnInit {
 
-  constructor(private clienteService:ClienteServiceService
+  constructor(private clienteService:EntidadService
     ,private router:Router,private route:ActivatedRoute){ }
-
-    entidad!:EntityCreationDto; 
     //declaracionde variables
+    entidad!:EntityCreationDto; 
+    EndpointApi= 'Cliente'
   errores:String[] = [];
   Entidadkind:Number = 1;
   ID!:Number;
 //******************** */
   ngOnInit(): void {
-    //this.ID = Number(this.route.snapshot.paramMap.get('id') ?? 0);
+    //console.log(this.route.pathFromRoot);
       this.route.params.subscribe(
         params =>
         {
-        
             this.ID = params['id'];
             if (this.ID)
             {
-              this.clienteService.Edit(this.ID).subscribe(
-              (entidad) => {this.entidad = entidad;
+              this.clienteService.FindByID(this.EndpointApi,this.ID).subscribe(
+              (response) => {this.entidad = response;
               });
             }
         }); 
@@ -38,13 +39,17 @@ export class ClienteComponent implements OnInit {
   btnDisabled: boolean = true;
   
   guardarCambios(cliente: EntityCreationDto){
-    this.clienteService.crear(cliente).subscribe(
+    this.clienteService.Save(this.EndpointApi,cliente,this.ID)//.pipe(catchError((obj)=> obj.error))
+    .subscribe(
       {
-        next:() =>{  
-          this.router.navigate(['/entidades/cliente']);
-        },
+      next:() =>{  
+         
+        this.router.navigate(['/entidades/cliente']);
+        }
+        ,
         error:(errors:any) =>{
-          this.errores = parsearerrorAPI(errors);
+          //this.errores = parsearerrorAPI(errors);
+          console.log(errors);
         }
       }
     );

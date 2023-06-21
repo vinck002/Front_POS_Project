@@ -8,6 +8,7 @@ import { ProveedorComponent } from './proveedor/proveedor.component';
 import { UserGuardGuard } from '../core/guards/user-guard.guard';
 import { ClienteComponent } from './cliente/cliente.component';
 import { ListaClientesComponent } from './lista-clientes/lista-clientes.component';
+import { ListaProveedoresComponent } from './lista-proveedores/lista-proveedores.component';
 
 const routes:Routes=[
   {
@@ -17,7 +18,9 @@ const routes:Routes=[
     {path:"cliente",component:ListaClientesComponent},
     {path:"creacioncliente/:id",component:ClienteComponent},
     {path:"creacioncliente",component:ClienteComponent},
-    {path:"proveedor",component:ProveedorComponent}
+    {path:"proveedor",component:ListaProveedoresComponent}, //
+    {path:"creacionproveedor",component:ProveedorComponent},
+    {path:"creacionproveedor/:id",component:ProveedorComponent}
     ,{path:'**',redirectTo:''}
     ]
   }

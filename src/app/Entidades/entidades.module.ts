@@ -13,6 +13,7 @@ import { CoreModule } from '../core/core.module';
 import { EntidadformComponent } from './entidadform/entidadform.component';
 import { ListaClientesComponent } from './lista-clientes/lista-clientes.component';
 import { ListaProveedoresComponent } from './lista-proveedores/lista-proveedores.component';
+import { ListaEntidadComponent } from './lista-entidad/lista-entidad.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { ListaProveedoresComponent } from './lista-proveedores/lista-proveedores
     ClienteComponent,
     EntidadformComponent,
     ListaClientesComponent,
-    ListaProveedoresComponent
+    ListaProveedoresComponent,
+    ListaEntidadComponent
   ],
   imports: [
     CoreModule,

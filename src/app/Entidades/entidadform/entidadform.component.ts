@@ -19,26 +19,27 @@ export class EntidadformComponent implements OnInit {
 form!:FormGroup 
 
 @Output() submit:EventEmitter<EntityCreationDto> = new EventEmitter<EntityCreationDto>();
+
   ngOnInit(): void {
     this.form = this.formBuilder.group(
       {
-        identification:['',{validator:[Validators.required]}],
+        identification:['',[Validators.required,Validators.pattern('[0-9]*')]],
         image:'',
-        name:['',{validator:[Validators.required]}],
-        lastname:['',{validator:[Validators.required]}],
+        names:['',[Validators.required]],
+        lastname:['',[Validators.required]],
         company:'',
         address1:'',
         address2:'',
         phone1:'',
         phone2:'',
-        email:'',
+        email:['',[Validators.email]],
         kind:this.Kind,
-        status : true,
-        created_at:new Date().toISOString(),
-        notes:''
-      }
-      );
-          if(this.modelo !== undefined){
+        notes:'',
+        created_at: this.modelo? this.modelo.created_at: new Date().toISOString(),
+        status : true
+      });
+      
+          if(this.modelo !== undefined){  
         this.form.patchValue(this.modelo);
         }
 
@@ -46,8 +47,9 @@ form!:FormGroup
 
 
   onSubmit(){
+    
     if(this.form.valid){
-      this.submit.emit(this.form?.value);
+      this.submit.emit(this.form.value);
     }
 }
 
