@@ -48,6 +48,11 @@ export interface ProductoCreacionDTO {
     updated_at: string | null;
 }
 
+export interface infoProductoBasic{
+    id: number;
+    description: string;
+    price:number ;
+}
 
 export interface UnitType{
     id: number;

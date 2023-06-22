@@ -19,6 +19,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 @NgModule({
   declarations: [],
   imports: [
@@ -41,7 +42,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatCardModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
     
   ],exports:[
     MatCheckboxModule,
@@ -65,6 +67,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatMenuModule,
     MatProgressSpinnerModule,
     MatDialogModule
+    ,MatSnackBarModule
   ]
 })
 export class MaterialModule { }

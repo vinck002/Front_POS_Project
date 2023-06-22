@@ -13,6 +13,7 @@ import { CategoriaCreacionComponent } from './categoria/categoria-creacion/categ
 import { StockComponent } from './stock/stock.component';
 import { CreacionEntradaComponent } from './entradas/creacion-entrada/creacion-entrada.component';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { ListaProducotoInventarioComponent } from './dialog/lista-producoto-inventario/lista-producoto-inventario.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
         StockComponent,
         CategoriaCreacionComponent,
         EntradasComponent,
-        CreacionEntradaComponent
+        CreacionEntradaComponent,
+        ListaProducotoInventarioComponent
     ],
     imports: [
         CurrencyMaskModule,
