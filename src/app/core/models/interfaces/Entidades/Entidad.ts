@@ -2,6 +2,7 @@
 export interface Entity{
     id :number;
 	identification: string;
+	RNC:string;
 	image:string | undefined;
 	names:String  ;
 	lastname:string;
@@ -16,12 +17,22 @@ export interface Entity{
 	created_at:Date;
 	status:boolean;
     }
+	
+	export interface Small_EntityInfoDTO{
+		id :number;
+		identification: number;
+		names: string;
+		company: string | null;
+		phone1: string | null;
+		email: string | null;
+		RNC:string;
+	}
 
 	export interface EntityCreationDto {
 		identification: number;
-		image: string | null;
+		image: string | null|undefined;
 		names: string;
-		lastname: string | null;
+		lastname: string | null|undefined;
 		company: string | null;
 		address1: string | null;
 		address2: string | null;

@@ -20,6 +20,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 @NgModule({
   declarations: [],
   imports: [
@@ -43,7 +44,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatProgressBarModule,
     MatProgressSpinnerModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatAutocompleteModule
     
   ],exports:[
     MatCheckboxModule,
@@ -68,6 +70,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatProgressSpinnerModule,
     MatDialogModule
     ,MatSnackBarModule
+    ,MatAutocompleteModule
   ]
 })
 export class MaterialModule { }
