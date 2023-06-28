@@ -21,9 +21,13 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   declarations: [],
   imports: [
+    MatNativeDateModule,
+    MatDatepickerModule,
     MatCheckboxModule,
     MatSortModule,
     MatTableModule,
@@ -48,6 +52,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatAutocompleteModule
     
   ],exports:[
+    MatNativeDateModule,
+    MatDatepickerModule,
     MatCheckboxModule,
     MatSortModule,
     MatTableModule,

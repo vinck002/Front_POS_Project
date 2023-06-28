@@ -13,6 +13,7 @@ export interface Product {
     user_id: string;
     categoryId: number;
     category: categoryDTO;
+    ITBIS:number;
     created_at: string;
     is_active: boolean;
     updated_at: string | null;
@@ -28,6 +29,7 @@ export interface productDTO{
     price_in: number;
     price_out: number;
     UnitID: number|1;
+    ITBIS:number;
     categoryId :number;
     categoryName: string;
     is_active: boolean; 
@@ -42,6 +44,7 @@ export interface ProductoCreacionDTO {
     inventary_min: number| 1;
     price_in: number | 0;
     price_out: number|0;
+    ITBIS:number | 0;
     unitID: number|1;
     categoryId: number | 1;
     is_active: boolean|true|false;
