@@ -53,8 +53,11 @@ export interface ProductoCreacionDTO {
 
 export interface infoProductoBasic{
     id: number;
+    barcode:string;
     description: string;
     price:number ;
+    itbis:number;
+    discount:boolean |false;
 }
 
 export interface UnitType{

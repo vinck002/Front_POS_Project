@@ -40,10 +40,19 @@
   }
 
   .headerFactura mat-form-field{
-    margin-top: 10px;
+    margin-top: 15px;
   }
-  
+  .productoagregar{
+    height: 50px;
+    margin-left: 1rem;
+    width: 100px;
+  }
+  .tableDetails{
+    margin-top:  4px;
+  }
 
-  
+  table {
+    width: 100%;
+  }
 
   

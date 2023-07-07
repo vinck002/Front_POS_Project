@@ -44,6 +44,7 @@ cantidadRegistroMostrar:number = 5;
       this.dataSource.paginator.firstPage();
     }
   }
+  
   DeleteEntidad(id:number){
 
     this.productService.delete(id).subscribe(()=>

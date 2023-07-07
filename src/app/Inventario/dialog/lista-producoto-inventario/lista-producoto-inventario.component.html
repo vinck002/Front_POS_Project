@@ -9,32 +9,54 @@
                 <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
               </mat-form-field>
               
-              <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" #tableRef>
-              
-                <!-- Position Column -->
-                <ng-container matColumnDef="position">
-                  <th mat-header-cell *matHeaderCellDef> No. </th>
-                  <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+              <table mat-table  [dataSource]="dataSource" matSort>
+                
+                <!-- ID Column -->
+                <ng-container matColumnDef="Barcode">
+                    <th mat-header-cell *matHeaderCellDef  mat-sort-header> Codigo </th>
+                    <td mat-cell *matCellDef="let row"> {{row.barcode}} </td>
                 </ng-container>
-              
-                <!-- Name Column -->
-                <ng-container matColumnDef="name">
-                  <th mat-header-cell *matHeaderCellDef> Name </th>
-                  <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                <ng-container matColumnDef="Name">
+                  <th mat-header-cell *matHeaderCellDef  mat-sort-header> Name </th>
+                  <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+              </ng-container>
+    
+                <ng-container matColumnDef="Image">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Image </th>
+                    <td mat-cell *matCellDef="let row">
+                        <div class="img">
+                            <img [src]="row.image" alt="">
+                        </div>
+                        </td>
                 </ng-container>
-              
-                <!-- Weight Column -->
-                <ng-container matColumnDef="weight">
-                  <th mat-header-cell *matHeaderCellDef> Weight </th>
-                  <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-                </ng-container>
-              
-                <!-- Symbol Column -->
-                <ng-container matColumnDef="symbol">
-                  <th mat-header-cell *matHeaderCellDef> Symbol </th>
-                  <td  mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-                </ng-container>
-              
+                
+            <ng-container matColumnDef="Descripcion">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion </th>
+                <td mat-cell *matCellDef="let row"> {{row.description}} </td>
+            </ng-container>
+            <ng-container matColumnDef="inventary_min">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Min Stocks </th>
+                <td mat-cell *matCellDef="let row"> {{row.inventary_min}} </td>
+            </ng-container>
+            <ng-container matColumnDef="price_in">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Precio/Mayor </th>
+                <td mat-cell *matCellDef="let row"> {{row.price_in | currency:'DOP$ '}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="price_out">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Precio/Detalle</th>
+                <td mat-cell *matCellDef="let row"> {{row.price_out| currency:'DOP$ '}} </td>
+            </ng-container>
+            //----------------------------------------------------------------  
+            <!-- <ng-container matColumnDef="unit">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> unit </th>
+                <td mat-cell *matCellDef="let row"> {{row.unit}} </td>
+            </ng-container> -->
+            <ng-container matColumnDef="categoryName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> categoria </th>
+                <td mat-cell *matCellDef="let row"> {{row.categoryName}} </td>
+            </ng-container>
+            
                 <tr  mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr class="Selecthand"  (click)="select(row)"  mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
               

@@ -1,13 +1,16 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 // import { MatPaginator } from '@angular/material/paginator';
 // import { MatSort } from '@angular/material/sort';
-import { OperationDetailDTO, TipoComprobante } from 'src/app/core/models/interfaces/operacion';
+import { OperationDetailDTO, OperationInOut, OperationInOutDTO, TipoComprobante } from 'src/app/core/models/interfaces/operacion';
 import { ListaProducotoInventarioComponent } from '../dialog/lista-producoto-inventario/lista-producoto-inventario.component';
 import {  Small_EntityInfoDTO } from 'src/app/core/models/interfaces/Entidades/Entidad';
 import { Observable, map, startWith } from 'rxjs';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 @Component({
@@ -16,7 +19,8 @@ import { Observable, map, startWith } from 'rxjs';
   styleUrls: ['./entradas.component.css']
 })
 export class EntradasComponent implements OnInit {
-  
+  @ViewChild('InPrecio', { static: false, read: ElementRef })
+  InPrecio!: ElementRef;
   
   constructor(private formBuilder:FormBuilder
     ,public dialog: MatDialog
@@ -28,13 +32,18 @@ export class EntradasComponent implements OnInit {
 //********************************************* */
 
     public form!:FormGroup
+    public formOperation!:FormGroup
+
     itbis_included = true;
     TipoComprobante = new FormControl<string | TipoComprobante>('');
     proveedorControl = new FormControl<string | Small_EntityInfoDTO>('');
+    
+    OperationInOut!: OperationInOutDTO 
     Operation_Detail:OperationDetailDTO[] = []
-
+    dataSource!: MatTableDataSource<OperationDetailDTO>;// this.Operation_Detail;
    //********************************************* */
    //********************************************* */ 
+discount=false;
 
   comprobantes =  [{id:2, names:'Factura de Consumo'},
               {id:1, names:'Factura de Crédito Fiscal'},
@@ -52,26 +61,15 @@ export class EntradasComponent implements OnInit {
 
   filteredComprobantes!: Observable<any[]>;
   filteredProveedores!: Observable<any[]>;
-  // @ViewChild(MatPaginator) paginator!: MatPaginator;
-  // @ViewChild(MatSort) sort!: MatSort;
-  displayedColumns: string[] = ['created', 'state', 'number', 'title'];
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+  displayedColumns: string[] = ['productName', 'qty', 'price','discount','itbisAplied', 'Acciones'];
   showFiller = true;
+  
   ngOnInit(): void {
-   
-
-    this.form =this.formBuilder.group({
-    id:[],
-    entidad_id:[1],
-    product_id: [0, Validators.required],
-    documento: ['',Validators.required],
-    qty: [1,Validators.required],
-    operation_type_id: [1, Validators.required],
-    operationInOut_id: [0,Validators.required],
-    ITBIS:[0.00,Validators.required],
-    discount: [0.00,Validators.required],
-    price: [0.00,Validators.required]
-    ,producto:['']
-  });
+    this.dataSource = new MatTableDataSource<OperationDetailDTO>();
+      this.InitializeOperationDetail();
+      this.initializeOperations();
 
   this.filteredComprobantes = this.TipoComprobante.valueChanges.pipe(
     startWith(''),
@@ -80,7 +78,6 @@ export class EntradasComponent implements OnInit {
       return name ? this._filter(name as string) : this.comprobantes.slice();
     }),
   );
-
 
   this.filteredProveedores = this.proveedorControl.valueChanges.pipe(
     startWith(''),
@@ -91,9 +88,43 @@ export class EntradasComponent implements OnInit {
   );
   }
 
+//////////////////////////////////////////////////////////////////
+//************************************************************** */
+
+  initializeOperations():void{
+    this.formOperation =this.formBuilder.group({
+      id:[],
+      entidad_id:[1],
+      rnc:[''],
+      documento: ['',Validators.required],
+      operation_type_id: [1, Validators.required],
+      documentType:[1],
+      CurrencyTypeID: [1],
+      Notes: [''],
+      AplicationDate:[new Date()],
+      ExpeditionDate:[new Date()]
+      
+    });
+  }
+  InitializeOperationDetail(){
+
+    this.form =this.formBuilder.group({
+      id:[],
+      barcode:['']
+      ,product_id: [0, Validators.required],
+      qty: [1,Validators.required],
+      //operation_type_id: [1, Validators.required],
+      itbisAplied:[0.00,Validators.required],
+      discount: [0.00,Validators.required],
+      price: [0.00,Validators.required]
+      ,productName:['']
+    });
+  }
+
+
   onSubmit(){
     this.Operation_Detail.push(this.form.value)
-    
+    console.log('se realizo submit');
   }
   //METODO PARA ABRIR EL INVENTARIO
   openListaInventario(){
@@ -104,8 +135,14 @@ export class EntradasComponent implements OnInit {
     
     dialogRef.afterClosed().subscribe((result:any) => {
       this.form.get('product_id')?.patchValue(result.id)
-      this.form.get('producto')?.patchValue(result.description)
-      console.log(this.form.value)
+      this.form.get('productName')?.patchValue(result.description)
+      this.form.get('price')?.patchValue(result.price)
+      if(!result.discount){
+      this.discount= true;
+        //this.form.get('discount')?.patchValue((result.discount/1))
+      }
+      this.form.get('barcode')?.patchValue(result.barcode)
+     //console.log(this.form.value)
     });
   }
 
@@ -120,7 +157,6 @@ export class EntradasComponent implements OnInit {
 
   onOptionSelected(event: any) {
       this.form.get('entidad_id')?.setValue(event.option.value.id) ;
-      console.log(this.form.value);
   }
 
 //APLICAR EL ITBIS
@@ -132,5 +168,16 @@ export class EntradasComponent implements OnInit {
     } else {
       console.log('El checkbox ha sido desmarcado.');
     }
+  }
+  setFocus() {
+    const inputElement = this.InPrecio.nativeElement as HTMLInputElement;
+    inputElement.focus();
+  }
+  AddProduct(){
+
+    this.Operation_Detail.push(this.form.value);
+    this.dataSource.data = this.Operation_Detail.slice();
+    this.InitializeOperationDetail();
+    this.setFocus();
   }
 }

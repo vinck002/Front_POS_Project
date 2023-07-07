@@ -4,6 +4,8 @@ export interface OperationInOut {
     id: number;
     entidad_id: number;
     documentNumber: string;
+    DocumentType:number;
+    rnc: string;
     user_id: string;
     operation_type_id: number;
     box_id: number;
@@ -29,12 +31,13 @@ export interface OperationDetail {
     created_at: string;
     discount: number;
     price: number;
-    itbis_included: boolean;
     itbisAplied: number;
     product: Product;
     operationInOut: OperationInOut;
     operationType: OperationType;
 }
+
+
 export interface OperationType {
     id: number;
     name: string;
@@ -46,34 +49,18 @@ export interface OperationTypeDTO {
     name: string;
 }
 // valores de entrada o de salida   IN/OUT
-export interface operartionType{
-    id: number;
-    Description:string;
-} 
 
 export interface operationEntry{
-id:number;
-
+    id:number;
+    
 }
-export interface OperationDetailDTO {
-    id?: number;
-    product_id: number;
-    documentNumber:string;
-    qty: number;
-    operation_type_id: number ;
-    operationInOut_id: number ;
-    itbis_included: boolean ;
-    itbisAplied:number;
-    discount: number;
-    price: number ;
-  
-}
-
 
 export interface OperationInOutDTO {
     id: number;
     entidad_id: number;
     documentNumber:string;
+    DocumentType:number;
+    rnc: string;
     user_id: string;
     operation_type_id: number;
     box_id: number;
@@ -83,9 +70,23 @@ export interface OperationInOutDTO {
     discount: number;
     AplicationDate :Date;
     ExpeditionDate: Date| null;
-    created_at: string;
+    CurrencyTypeID: number|1;
+    OperationDetailDTO:OperationDetailDTO[];
+}
+export interface OperationDetailDTO {
+    id?: number;
+    barcode:string;
+    product_id: number;
+    productName:string;
+    qty: number;
+    operation_type_id: number ;
+    operationInOut_id: number ;
+    itbisAplied:number;
+    discount: number;
+    price: number ;
   
 }
+
 
 
 export interface TipoComprobante{
