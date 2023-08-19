@@ -80,11 +80,12 @@
   <button class="btnProducto" mat-mini-fab color="primary" (click)="openListaInventario()" >
     <mat-icon>search</mat-icon> 
   </button>
-  <span>Buscar Producto</span>
+  <span class="lblbuscar">Buscar Producto</span>
 <form  [formGroup]="form">   
                         <mat-form-field appearance="outline"> 
                           <mat-label>Codigo</mat-label>
-                          <input matInput  formControlName="barcode">
+                          <input matInput #code  formControlName="barcode"
+                          (keydown.enter)="onEnterKey($event)">
                       </mat-form-field>
 
                         <mat-form-field appearance="outline"> 
@@ -95,7 +96,7 @@
                         
                         <mat-form-field appearance="outline"> 
                           <mat-label>Valor</mat-label>
-                          <input id="InPrecio" matInput  formControlName="price">
+                          <input [readonly]="true" #InPrecio matInput  formControlName="price">
                         </mat-form-field>
                         
                         <mat-form-field appearance="outline"> 

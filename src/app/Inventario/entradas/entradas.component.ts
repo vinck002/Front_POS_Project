@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -19,12 +19,13 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./entradas.component.css']
 })
 export class EntradasComponent implements OnInit {
-  @ViewChild('InPrecio', { static: false, read: ElementRef })
-  InPrecio!: ElementRef;
+  @ViewChild('code', { static: false, })
+  RefFocusInput!: ElementRef;
   
   constructor(private formBuilder:FormBuilder
     ,public dialog: MatDialog
-    ,public snackBar:MatSnackBar) { }
+    ,public snackBar:MatSnackBar
+    ,private renderer: Renderer2) { }
 
 
 //********************************************* */
@@ -93,7 +94,7 @@ discount=false;
 
   initializeOperations():void{
     this.formOperation =this.formBuilder.group({
-      id:[],
+      id:[0],
       entidad_id:[1],
       rnc:[''],
       documento: ['',Validators.required],
@@ -109,7 +110,7 @@ discount=false;
   InitializeOperationDetail(){
 
     this.form =this.formBuilder.group({
-      id:[],
+      id:[0],
       barcode:['']
       ,product_id: [0, Validators.required],
       qty: [1,Validators.required],
@@ -170,14 +171,33 @@ discount=false;
     }
   }
   setFocus() {
-    const inputElement = this.InPrecio.nativeElement as HTMLInputElement;
-    inputElement.focus();
+    this.renderer.selectRootElement(this.RefFocusInput.nativeElement).focus();
   }
   AddProduct(){
+    if (typeof this.form.get('barcode')?.value === 'number' && !isNaN(this.form.get('barcode')?.value)) {return;}
+    const codigo:string = this.form.get('barcode')?.value;
+    const indexAModificar: number = this.Operation_Detail.findIndex(item => item.barcode === codigo);
+    const elementoAModificar: OperationDetailDTO | undefined = this.Operation_Detail.find(item => item.barcode === codigo);
+    
+    if (elementoAModificar) {
+      // Modificar el elemento en el array
+      const suma = parseInt(elementoAModificar.qty.toString()) +parseInt( this.form.get('qty')?.value);
+      elementoAModificar.qty =suma;
+      //elementoAModificar.qty += parseInt( this.form.get('qty')?.value);
+    } else{
+      this.Operation_Detail.push(this.form.value);
+    }
 
-    this.Operation_Detail.push(this.form.value);
-    this.dataSource.data = this.Operation_Detail.slice();
+    this.dataSource.data =this.Operation_Detail;// this.Operation_Detail.slice();
     this.InitializeOperationDetail();
     this.setFocus();
   }
+
+  onEnterKey(event:any) {
+    // Verifica si la tecla presionada es "Enter" (código 13)
+    if (event.keyCode === 13) {
+
+      console.log('Tecla Enter presionada');
+    }}
+
 }
