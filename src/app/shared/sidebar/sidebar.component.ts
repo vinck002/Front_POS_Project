@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { sidebarOptionDto } from 'src/app/core/Dtos/SidebarOptionsDto';
+//import { sidebarOptionDto } from 'src/app/core/Dtos/SidebarOptionsDto';
 import { SeguridadService } from 'src/app/core/seguridad/seguridad.service';
 
 @Component({

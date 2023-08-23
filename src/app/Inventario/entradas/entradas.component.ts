@@ -1,16 +1,16 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 // import { MatPaginator } from '@angular/material/paginator';
 // import { MatSort } from '@angular/material/sort';
 import { OperationDetailDTO, OperationInOut, OperationInOutDTO, TipoComprobante } from 'src/app/core/models/interfaces/operacion';
 import { ListaProducotoInventarioComponent } from '../dialog/lista-producoto-inventario/lista-producoto-inventario.component';
 import {  Small_EntityInfoDTO } from 'src/app/core/models/interfaces/Entidades/Entidad';
 import { Observable, map, startWith } from 'rxjs';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
 
 
 @Component({
