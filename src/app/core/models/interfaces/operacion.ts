@@ -84,6 +84,7 @@ export interface OperationDetailDTO {
     itbisAplied:number;
     discount: number;
     price: number ;
+    TotalLine:number ;
   
 }
 

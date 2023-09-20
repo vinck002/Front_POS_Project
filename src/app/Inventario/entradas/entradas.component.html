@@ -1,31 +1,32 @@
 <div class="container-fluid">
     <mat-drawer-container class="Entradas-nav-container" >
-        <mat-drawer #drawer class="Entrada-sidenav" mode="side">
-         
-                <span><p>Acciones</p></span>
+        
+      <!-- <mat-drawer #drawer class="Entrada-sidenav" mode="side">
+               <span><p>Acciones</p></span>
                <div class="acciones"><button mat-flat-button color="primary">Nuevo</button></div>
                <div class="acciones"><button mat-flat-button color="accent">Guardar</button></div>
-               <div class="acciones "><button mat-flat-button color="warn">Cancelar</button></div>
-
-        </mat-drawer>
+               <div class="acciones "><button mat-flat-button color="warn">Cancelar</button></div> 
+        </mat-drawer> -->
       
         <div class="Main-content">
 
               <mat-card class="card">
-                <button mat-mini-fab>
+                <!-- <button mat-mini-fab>
 
                     <mat-icon  (click)="drawer.toggle()">menu</mat-icon> 
-                </button>
+                </button> -->
                 <mat-card-header>
                   <div mat-card-avatar class="header-image"></div>
                  
                   <mat-card-title>Entrada de Mercancia</mat-card-title>
-                  <mat-card-subtitle>*****</mat-card-subtitle>
+                  <mat-card-subtitle>**1.0.0***</mat-card-subtitle>
                 </mat-card-header>
                 <div class="row">
 
                   <!-- <mat-checkbox (change)="onCheckboxChange($event)" class="example-margin" [(ngModel)]="itbis_included" >ITBIS</mat-checkbox> -->
- <form  [formGroup]="formOperation" (submit)="onSubmit()">        
+ 
+ 
+                  <form  [formGroup]="formOperation" (submit)="onSubmit()">        
 <div class="border rounded">
 
       <mat-form-field appearance="outline"> 
@@ -101,7 +102,7 @@
                         
                         <mat-form-field appearance="outline"> 
                           <mat-label>Qty</mat-label>
-                          <input matInput  formControlName="qty">
+                          <input color="primary" matInput  formControlName="qty" NumberOnly>
                         </mat-form-field>
                         
                         <mat-form-field appearance="outline"> 
@@ -154,6 +155,11 @@
         <th mat-header-cell *matHeaderCellDef>ITBIS</th>
         <td mat-cell *matCellDef="let row">{{row.itbisAplied}}</td>
       </ng-container>
+
+      <ng-container matColumnDef="TotalLine">
+        <th mat-header-cell *matHeaderCellDef>Total</th>
+        <td mat-cell *matCellDef="let row">{{row.TotalLine}}</td>
+      </ng-container>
       
       <ng-container matColumnDef="Acciones">
         <th mat-header-cell *matHeaderCellDef>Acciones</th>
@@ -174,9 +180,13 @@
 </div>
                 </div>
                 </mat-card-content>
+               
                 <mat-card-actions>
                   <button mat-button>Imprimir</button>
-                  <button mat-button>SHARE</button>
+                  <!-- <span><p>Acciones</p></span> -->
+                  <button class="btnAccion" mat-flat-button color="primary" >Nuevo</button>
+                  <button class="btnAccion" mat-flat-button color="accent" (click)="GuardarEntrada()">Guardar</button>
+                  <button class="btnAccion" mat-flat-button color="warn">Cancelar</button>
                 </mat-card-actions>
               </mat-card>
         </div>

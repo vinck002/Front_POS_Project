@@ -65,7 +65,7 @@ discount=false;
   filteredProveedores!: Observable<any[]>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  displayedColumns: string[] = ['productName', 'qty', 'price','discount','itbisAplied', 'Acciones'];
+  displayedColumns: string[] = ['productName', 'qty', 'price','discount','itbisAplied','TotalLine', 'Acciones'];
   showFiller = true;
   
   ngOnInit(): void {
@@ -114,11 +114,12 @@ discount=false;
       id:[0],
       barcode:['']
       ,product_id: [0, Validators.required],
-      qty: [1,Validators.required],
+      qty: [1],
       //operation_type_id: [1, Validators.required],
       itbisAplied:[0.00,Validators.required],
       discount: [0.00,Validators.required],
       price: [0.00,Validators.required]
+      ,TotalLine: [0.00]
       ,productName:['']
     });
   }
@@ -136,15 +137,19 @@ discount=false;
     })
     
     dialogRef.afterClosed().subscribe((result:any) => {
-      this.form.get('product_id')?.patchValue(result.id)
-      this.form.get('productName')?.patchValue(result.description)
-      this.form.get('price')?.patchValue(result.price)
-      if(!result.discount){
-      this.discount= true;
-        //this.form.get('discount')?.patchValue((result.discount/1))
+      if(result){
+        this.form.get('product_id')?.patchValue(result.id)
+        this.form.get('productName')?.patchValue(result.description)
+        this.form.get('price')?.patchValue(result.price)
+     
+        if(!result.discount){
+        this.discount= true;
+          //this.form.get('discount')?.patchValue((result.discount/1))
+        }
+        this.form.get('barcode')?.patchValue(result.barcode)
+       //console.log(this.form.value)
       }
-      this.form.get('barcode')?.patchValue(result.barcode)
-     //console.log(this.form.value)
+      
     });
   }
 
@@ -177,15 +182,19 @@ discount=false;
   AddProduct(){
     if (typeof this.form.get('barcode')?.value === 'number' && !isNaN(this.form.get('barcode')?.value)) {return;}
     const codigo:string = this.form.get('barcode')?.value;
-    const indexAModificar: number = this.Operation_Detail.findIndex(item => item.barcode === codigo);
+    //const indexAModificar: number = this.Operation_Detail.findIndex(item => item.barcode === codigo);
     const elementoAModificar: OperationDetailDTO | undefined = this.Operation_Detail.find(item => item.barcode === codigo);
     
     if (elementoAModificar) {
       // Modificar el elemento en el array
-      const suma = parseInt(elementoAModificar.qty.toString()) +parseInt( this.form.get('qty')?.value);
+      const suma = parseInt(elementoAModificar.qty.toString()) + parseInt( this.form.get('qty')?.value);
       elementoAModificar.qty =suma;
+      elementoAModificar.TotalLine = elementoAModificar.qty * elementoAModificar.price;
       //elementoAModificar.qty += parseInt( this.form.get('qty')?.value);
     } else{
+      console.log(this.form.get('qty')?.value??0);
+      console.log(this.form.get('price')?.value??0);
+      this.form.get('TotalLine')?.setValue((parseInt((this.form.get('qty')?.value??0).toString())) * (parseInt((this.form.get('price')?.value??0).toString()))) ;
       this.Operation_Detail.push(this.form.value);
     }
 
@@ -200,5 +209,9 @@ discount=false;
 
       console.log('Tecla Enter presionada');
     }}
+
+    GuardarEntrada(){
+      console.log(this.Operation_Detail)
+    }
 
 }
