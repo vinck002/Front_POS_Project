@@ -22,6 +22,8 @@ export class EntidadService {
 
     return this.http.get<Entity[]>(this.FullUri(urlEntidad),{observe:'response'});
   }
+
+  
   
   public Save(urlEntidad:string,Entidad:EntityCreationDto,id:Number){
 console.log(Entidad)

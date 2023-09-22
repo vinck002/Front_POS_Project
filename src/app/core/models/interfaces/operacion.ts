@@ -69,7 +69,6 @@ export interface OperationInOutDTO {
     cash: number;
     discount: number;
     AplicationDate :Date;
-    ExpeditionDate: Date| null;
     CurrencyTypeID: number|1;
     OperationDetailDTO:OperationDetailDTO[];
 }
@@ -91,6 +90,11 @@ export interface OperationDetailDTO {
 
 
 export interface TipoComprobante{
+    id:number;
+     names:string;
+}
+
+export interface OperationType{
     id:number;
      names:string;
 }

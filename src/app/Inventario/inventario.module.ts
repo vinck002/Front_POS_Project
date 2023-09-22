@@ -14,6 +14,7 @@ import { StockComponent } from './stock/stock.component';
 import { CreacionEntradaComponent } from './entradas/creacion-entrada/creacion-entrada.component';
 import { ListaProducotoInventarioComponent } from './dialog/lista-producoto-inventario/lista-producoto-inventario.component';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { ListaProveedoresComponent } from './dialog/lista-proveedores/lista-proveedores.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
         CategoriaCreacionComponent,
         EntradasComponent,
         CreacionEntradaComponent,
-        ListaProducotoInventarioComponent
+        ListaProducotoInventarioComponent,
+        ListaProveedoresComponent
     ],
     imports: [
         CommonModule,

@@ -23,7 +23,7 @@ export class ListaProducotoInventarioComponent implements OnInit {
     private productService:ProductService) { }
 
 
-    @Output()  producto = new EventEmitter<infoProductoBasic>();
+    //@Output()  producto = new EventEmitter<infoProductoBasic>();
     idProducto:number = 0;
     close(){
     this.dialogRef.close();

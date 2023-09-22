@@ -26,28 +26,29 @@
                   <!-- <mat-checkbox (change)="onCheckboxChange($event)" class="example-margin" [(ngModel)]="itbis_included" >ITBIS</mat-checkbox> -->
  
  
-                  <form  [formGroup]="formOperation" (submit)="onSubmit()">        
-<div class="border rounded">
+                  <form  (submit)="onSubmit()">        
+        <div class="border rounded" id="InvoiceHeader">
 
       <mat-form-field appearance="outline"> 
         <mat-label>Documento</mat-label>
-        <input matInput  formControlName="documento">
+        <input matInput  >
     </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Tipo de Comprobante</mat-label>
-        <input type="text" matInput [formControl]="TipoComprobante" [matAutocomplete]="autoComprobante">
+        <input type="text" matInput  [matAutocomplete]="autoComprobante">
         <mat-autocomplete  #autoComprobante="matAutocomplete" (optionSelected)="onOptionSelected($event)" [displayWith]="displayFn" >
           <mat-option *ngFor="let option of filteredComprobantes | async" [value]="option">
             {{option.names}}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Proveedor  </mat-label>
-        <input type="text" matInput [formControl]="proveedorControl" [matAutocomplete]="autoProveedores">
+      
+      <mat-form-field  appearance="outline" >
+        <mat-label  >Proveedor  </mat-label>
+        <input (keydown.enter)="OpenProveedor()"   value="{{Sproveedor().names}}" type="text" matInput  [matAutocomplete]="autoProveedores">
         <mat-autocomplete  #autoProveedores="matAutocomplete" (optionSelected)="onOptionSelected($event)" [displayWith]="displayFn" >
+          
           <mat-option *ngFor="let option of filteredProveedores | async" [value]="option">
             {{option.names}}
           </mat-option>
@@ -56,7 +57,7 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Fecha de Expedicion</mat-label>
-        <input formControlName="ExpeditionDate" matInput  [matDatepicker]="picker1">
+        <input  matInput  [matDatepicker]="picker1">
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
         <mat-datepicker #picker1 color="primary"></mat-datepicker>
@@ -65,14 +66,14 @@
       <mat-form-field appearance="outline">
         <mat-label>Fecha de Entrada</mat-label>
         <mat-datepicker-toggle matSuffix  [for]="picker2"></mat-datepicker-toggle>
-        <input formControlName="AplicationDate" matInput [matDatepicker]="picker2">
+        <input  matInput [matDatepicker]="picker2">
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker #picker2 color="primary"></mat-datepicker>
       </mat-form-field>
 
       <mat-form-field appearance="outline"> 
         <mat-label>Notas</mat-label>
-        <input matInput  formControlName="Notes">
+        <input matInput  >
     </mat-form-field>
 
 </div>
