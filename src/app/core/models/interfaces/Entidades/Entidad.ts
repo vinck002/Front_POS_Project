@@ -2,7 +2,7 @@
 export interface Entity{
     id?:number;
 	identification?: string;
-	RNC?:string;
+	rnc?:string;
 	image?:string | undefined;
 	names?:string  ;
 	lastname?:string;

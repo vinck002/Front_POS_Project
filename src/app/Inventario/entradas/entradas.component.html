@@ -26,49 +26,53 @@
                   <!-- <mat-checkbox (change)="onCheckboxChange($event)" class="example-margin" [(ngModel)]="itbis_included" >ITBIS</mat-checkbox> -->
  
  
-                  <form  (submit)="onSubmit()">        
+        <form >        
         <div class="border rounded" id="InvoiceHeader">
 
       <mat-form-field appearance="outline"> 
         <mat-label>Documento</mat-label>
-        <input matInput  >
+        <input matInput  [(ngModel)]="documentNumber " [ngModelOptions]="{standalone: true}" >
+    </mat-form-field>
+    <mat-form-field appearance="outline"> 
+      <mat-label>RNC</mat-label>
+      <input matInput [(ngModel)]="rnc" [ngModelOptions]="{standalone: true}"  value="{{Sproveedor().rnc}}"  >
     </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Tipo de Comprobante</mat-label>
-        <input type="text" matInput  [matAutocomplete]="autoComprobante">
+        <mat-label>Tipo</mat-label>
+        <input type="text" matInput  [matAutocomplete]="autoComprobante" >
         <mat-autocomplete  #autoComprobante="matAutocomplete" (optionSelected)="onOptionSelected($event)" [displayWith]="displayFn" >
-          <mat-option *ngFor="let option of filteredComprobantes | async" [value]="option">
+          <mat-option *ngFor="let option of comprobantes" [value]="option">
             {{option.names}}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
       
       <mat-form-field  appearance="outline" >
-        <mat-label  >Proveedor  </mat-label>
-        <input (keydown.enter)="OpenProveedor()"   value="{{Sproveedor().names}}" type="text" matInput  [matAutocomplete]="autoProveedores">
-        <mat-autocomplete  #autoProveedores="matAutocomplete" (optionSelected)="onOptionSelected($event)" [displayWith]="displayFn" >
+        <mat-label >Proveedor  </mat-label>
+        <input (keydown.enter)="OpenProveedor()"  value="{{Sproveedor().names}}" type="text" matInput  >
+        <!-- <mat-autocomplete  #autoProveedores="matAutocomplete" (optionSelected)="onOptionSelected($event)" [displayWith]="displayFn" >
           
           <mat-option *ngFor="let option of filteredProveedores | async" [value]="option">
             {{option.names}}
           </mat-option>
-        </mat-autocomplete>
+        </mat-autocomplete> -->
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
+      <!-- <mat-form-field appearance="outline">
         <mat-label>Fecha de Expedicion</mat-label>
         <input  matInput  [matDatepicker]="picker1">
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
         <mat-datepicker #picker1 color="primary"></mat-datepicker>
-      </mat-form-field>
+      </mat-form-field> -->
 
       <mat-form-field appearance="outline">
         <mat-label>Fecha de Entrada</mat-label>
-        <mat-datepicker-toggle matSuffix  [for]="picker2"></mat-datepicker-toggle>
-        <input  matInput [matDatepicker]="picker2">
+        <mat-datepicker-toggle matSuffix  [for]="picker2" ></mat-datepicker-toggle>
+        <input (dateInput)="DateChanged($event)"  matInput [matDatepicker]="picker2">
         <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker #picker2 color="primary"></mat-datepicker>
+        <mat-datepicker  #picker2  color="primary"></mat-datepicker>
       </mat-form-field>
 
       <mat-form-field appearance="outline"> 
@@ -144,12 +148,12 @@
 
       <ng-container matColumnDef="price">
         <th mat-header-cell *matHeaderCellDef>Precio</th>
-        <td mat-cell *matCellDef="let row">{{row.price}}</td>
+        <td mat-cell *matCellDef="let row">{{row.price | currency}}</td>
       </ng-container>
 
       <ng-container matColumnDef="discount">
         <th mat-header-cell *matHeaderCellDef>Descuento</th>
-        <td mat-cell *matCellDef="let row">{{row.discount}}</td>
+        <td mat-cell *matCellDef="let row">{{row.discount | currency}}</td>
       </ng-container>
 
       <ng-container matColumnDef="itbisAplied">
@@ -159,7 +163,7 @@
 
       <ng-container matColumnDef="TotalLine">
         <th mat-header-cell *matHeaderCellDef>Total</th>
-        <td mat-cell *matCellDef="let row">{{row.TotalLine}}</td>
+        <td mat-cell *matCellDef="let row">{{row.TotalLine | currency}}</td>
       </ng-container>
       
       <ng-container matColumnDef="Acciones">
@@ -186,7 +190,7 @@
                   <button mat-button>Imprimir</button>
                   <!-- <span><p>Acciones</p></span> -->
                   <button class="btnAccion" mat-flat-button color="primary" >Nuevo</button>
-                  <button class="btnAccion" mat-flat-button color="accent" (click)="GuardarEntrada()">Guardar</button>
+                  <button class="btnAccion" mat-flat-button color="accent" (click)="GuardarOperacion()">Guardar</button>
                   <button class="btnAccion" mat-flat-button color="warn">Cancelar</button>
                 </mat-card-actions>
               </mat-card>

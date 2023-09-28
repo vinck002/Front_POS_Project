@@ -63,7 +63,6 @@ actualizarPaginacion(datos:PageEvent) {
   }
 
   select(row:any){
-
     this.dialogRef.close(row);
   }
 
