@@ -18,18 +18,18 @@ private readonly Role = 'role';
 
   
 public logeado():boolean{
-    const token = localStorage.getItem(this.token);
-   //console.log(new Date ,this.token);
-    if(!token){
-    return false;
-    }
-    const expira = localStorage.getItem(this.expiracion);
-    const expiracionFecha = new Date(expira!)
-    if(expiracionFecha <= new Date)
-    {
-      this.logout();
-      return false;
-    }
+  //   const token = localStorage.getItem(this.token);
+  //  //console.log(new Date ,this.token);
+  //   if(!token){
+  //   return false;
+  //   }
+  //   const expira = localStorage.getItem(this.expiracion);
+  //   const expiracionFecha = new Date(expira!)
+  //   if(expiracionFecha <= new Date)
+  //   {
+  //     this.logout();
+  //     return false;
+  //   }
     return true;
   }
 
