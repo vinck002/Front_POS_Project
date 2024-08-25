@@ -1,6 +1,6 @@
 import { Component, ContentChild, EventEmitter, OnInit, Output } from '@angular/core';
 import { SeguridadService } from 'src/app/core/seguridad/seguridad.service';
-import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { DialogContentComponent } from '../dialog-content/dialog-content.component';
 @Component({
   selector: 'app-header',

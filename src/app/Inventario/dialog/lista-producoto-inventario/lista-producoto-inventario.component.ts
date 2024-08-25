@@ -1,8 +1,8 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, EventEmitter, Inject, OnInit, Output, ViewChild } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import {  MAT_DIALOG_DATA,  MatDialogRef } from '@angular/material/dialog';
+import {  MatPaginator,  PageEvent } from '@angular/material/paginator';
+import {  MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { toInteger } from 'lodash';
@@ -23,7 +23,7 @@ export class ListaProducotoInventarioComponent implements OnInit {
     private productService:ProductService) { }
 
 
-    @Output()  producto = new EventEmitter<infoProductoBasic>();
+    //@Output()  producto = new EventEmitter<infoProductoBasic>();
     idProducto:number = 0;
     close(){
     this.dialogRef.close();

@@ -1,7 +1,7 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
+import {  MatPaginator, PageEvent } from '@angular/material/paginator';
+import {  MatTableDataSource } from '@angular/material/table';
 import { toInteger } from 'lodash';
 import { Entity } from 'src/app/core/models/interfaces/Entidades/Entidad';
 import { EntidadService } from 'src/app/core/services/entidad-service';

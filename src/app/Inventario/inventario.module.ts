@@ -12,8 +12,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CategoriaCreacionComponent } from './categoria/categoria-creacion/categoria-creacion.component';
 import { StockComponent } from './stock/stock.component';
 import { CreacionEntradaComponent } from './entradas/creacion-entrada/creacion-entrada.component';
-import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { ListaProducotoInventarioComponent } from './dialog/lista-producoto-inventario/lista-producoto-inventario.component';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { ListaProveedoresComponent } from './dialog/lista-proveedores/lista-proveedores.component';
 
 
 @NgModule({
@@ -25,16 +26,17 @@ import { ListaProducotoInventarioComponent } from './dialog/lista-producoto-inve
         CategoriaCreacionComponent,
         EntradasComponent,
         CreacionEntradaComponent,
-        ListaProducotoInventarioComponent
+        ListaProducotoInventarioComponent,
+        ListaProveedoresComponent
     ],
     imports: [
-        CurrencyMaskModule,
         CommonModule,
         InventarioRoutingModule,
         MaterialModule,
         CoreModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        CurrencyMaskModule
     ]
 })
 export class InventarioModule { }

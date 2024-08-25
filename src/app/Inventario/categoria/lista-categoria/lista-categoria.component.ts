@@ -1,8 +1,8 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import {  MatPaginator, PageEvent as PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import {  MatTableDataSource } from '@angular/material/table';
 import { toInteger } from 'lodash';
 import { category } from 'src/app/core/models/interfaces/category';
 import { CategoryService } from 'src/app/core/services/category/category.service';

@@ -1,11 +1,12 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatPaginator,  PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import {  MatTableDataSource } from '@angular/material/table';
 import { toInteger } from 'lodash';
 import { Product, productDTO } from 'src/app/core/models/interfaces/product';
 import { ProductService } from 'src/app/core/services/Producto/productoService';
+import { _MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-lista-productos',
@@ -16,7 +17,7 @@ export class ListaProductosComponent implements OnInit {
 
   constructor(private productService:ProductService) { }
   
-  dataSource = new MatTableDataSource<productDTO>();
+  dataSource = new _MatTableDataSource<productDTO>();
   Product: productDTO[] =[];
 cantidadTotaldeRegistro:number = 0;
 paginaActual:number = 1;

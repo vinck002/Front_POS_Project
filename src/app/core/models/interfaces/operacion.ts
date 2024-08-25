@@ -56,20 +56,18 @@ export interface operationEntry{
 }
 
 export interface OperationInOutDTO {
-    id: number;
     entidad_id: number;
     documentNumber:string;
     DocumentType:number;
-    rnc: string;
-    user_id: string;
+    rnc?: string;
+    user_id?: string;
     operation_type_id: number;
     box_id: number;
     total: number;
-    totalITBIS:number;
+    totalITBIS?:number;
     cash: number;
     discount: number;
     AplicationDate :Date;
-    ExpeditionDate: Date| null;
     CurrencyTypeID: number|1;
     OperationDetailDTO:OperationDetailDTO[];
 }
@@ -84,12 +82,18 @@ export interface OperationDetailDTO {
     itbisAplied:number;
     discount: number;
     price: number ;
+    TotalLine:number ;
   
 }
 
 
 
 export interface TipoComprobante{
+    id:number;
+     names:string;
+}
+
+export interface OperationType{
     id:number;
      names:string;
 }

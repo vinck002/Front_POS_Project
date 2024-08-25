@@ -57,5 +57,10 @@
   .lblbuscar{
     margin-left: 1rem;
   }
+  .btnAccion{
+margin-left: 1rem;
+  }
 
-  
+  #InvoiceHeader mat-form-field{
+    margin: 1rem;
+  } 

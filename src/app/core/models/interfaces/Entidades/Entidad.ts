@@ -1,21 +1,21 @@
 
 export interface Entity{
-    id :number;
-	identification: string;
-	RNC:string;
-	image:string | undefined;
-	names:String  ;
-	lastname:string;
-	company:string;
-	address1:string;
-	address2:string | undefined;
-	phone1:string | undefined;
-	phone2:string | undefined;
-	email:string | undefined;
-	kind:number; // proveedor o cliente
-	notes:String
-	created_at:Date;
-	status:boolean;
+    id?:number;
+	identification?: string;
+	rnc?:string;
+	image?:string | undefined;
+	names?:string  ;
+	lastname?:string;
+	company?:string;
+	address1?:string;
+	address2?:string | undefined;
+	phone1?:string | undefined;
+	phone2?:string | undefined;
+	email?:string | undefined;
+	kind?:number; // proveedor o cliente
+	notes?:String
+	created_at?:Date;
+	status?:boolean;
     }
 	
 	export interface Small_EntityInfoDTO{
