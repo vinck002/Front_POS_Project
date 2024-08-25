@@ -24,6 +24,7 @@
     "@auth0/angular-jwt": "^5.0.2",
     "@ngneat/until-destroy": "^9.2.1",
     "bootstrap": "^5.2.3",
+    "ip": "^2.0.1",
     "jquery": "^3.6.1",
     "ng2-currency-mask": "^13.0.3",
     "ngx-cookie-service": "^16.0.1",
