@@ -6,7 +6,7 @@ import { EntidadesComponent } from './entidades.component';
 import { ProveedorComponent } from './proveedor/proveedor.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { MaterialModule } from '../material.module';
-import{ HttpClientModule}from '@angular/common/http'
+import{ provideHttpClient, withInterceptorsFromDi }from '@angular/common/http'
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule ,FormsModule} from '@angular/forms';
 import { CoreModule } from '../core/core.module';
@@ -16,26 +16,20 @@ import { ListaProveedoresComponent } from './lista-proveedores/lista-proveedores
 import { ListaEntidadComponent } from './lista-entidad/lista-entidad.component';
 
 
-@NgModule({
-  declarations: [
-    UsuariosComponent,
-    EntidadesComponent,
-    ProveedorComponent,
-    ClienteComponent,
-    EntidadformComponent,
-    ListaClientesComponent,
-    ListaProveedoresComponent,
-    ListaEntidadComponent
-  ],
-  imports: [
-    CoreModule,
-    FormsModule,
-    ReactiveFormsModule,
-    FlexLayoutModule,
-    HttpClientModule,
-    MaterialModule,
-    CommonModule,
-    EntidadRoutingModule
-  ]
-})
+@NgModule({ declarations: [
+        UsuariosComponent,
+        EntidadesComponent,
+        ProveedorComponent,
+        ClienteComponent,
+        EntidadformComponent,
+        ListaClientesComponent,
+        ListaProveedoresComponent,
+        ListaEntidadComponent
+    ], imports: [CoreModule,
+        FormsModule,
+        ReactiveFormsModule,
+        FlexLayoutModule,
+        MaterialModule,
+        CommonModule,
+        EntidadRoutingModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class EntidadesModule { }
